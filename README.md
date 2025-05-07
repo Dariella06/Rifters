@@ -22,6 +22,8 @@ Nuestro proyecto estará dividido en tres secciones principales:
 ## Requisitos Técnicos del Proyecto
 
 En este apartado describimos todos los requerimientos técnicos necesarios para el desarrollo de nuestor juego y ejecución del proyecto. Aquí detallamos tanto los aspectos del backend (servidor y lógica de negocio), como del frontend (cliente), infraestructura, herramientas de desarrollo y consideraciones de seguridad.
+
+Enlace de ver los requerimientos:
 [Requerimientos Técnicos](https://github.com/Dariella06/Rifters/blob/main/Requerimientos_tecnicos.md)
 
 
