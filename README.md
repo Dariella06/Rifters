@@ -11,7 +11,7 @@ Los jugadores podrán:
 
 Una vez que ambos estén conectados, la partida comenzará y se desarrollará por turnos, permitiendo a cada jugador usar sus cartas de manera estratégica para derrotar al oponente.
 
-Nuestro sistema estará dividido en tres componentes principales:
-Cliente: Interfaaz donde los jugadores interactúan con el juego.
-Servidor: Lógica del juego, gestión de turnos, partidas y conexión con la base de datos.
-Bases de Datos: Base de datos MySQL que se administrara mediante con phpMyAdmin, donde se almacenan usuarios, cartas, mazos, partidas, etc.
+Nuestro proyecto estará dividido en tres secciones principales:
+**Cliente:** Interfaaz donde los jugadores interactúan con el juego.
+**Servidor:** Lógica del juego, gestión de turnos, partidas y conexión con la base de datos.
+**Bases de Datos:** Base de datos MySQL que se administrara mediante con phpMyAdmin, donde se almacenan usuarios, cartas, mazos, partidas, etc.
