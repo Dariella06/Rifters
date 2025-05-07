@@ -1,6 +1,6 @@
 # Rifters
 
-## Descripción
+## Descripción del Proyecto Rifters
 
 **Rifters** será un juego de cartas por turnos, inspirado en títulos como *Hearthstone*. El objetivo principal es permitir que dos jugadores se enfrenten en línea, cada uno utilizando su propio mazo de cartas.
 
