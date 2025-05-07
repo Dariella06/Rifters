@@ -26,4 +26,9 @@ En este apartado describimos todos los requerimientos técnicos necesarios para 
 Enlace de ver los requerimientos:
 [Requerimientos Técnicos](https://github.com/Dariella06/Rifters/blob/main/Requerimientos_tecnicos.md)
 
+## Modelo E/R
+
+En este apartado se muestra el Modelo E/R de nuestro proyecto, donde se puede ver la estructura de la base de datos.
+
+![Modelo E/R](imagenes/image.png)
 
