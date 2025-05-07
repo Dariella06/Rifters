@@ -63,3 +63,20 @@ Nuestro proyecto estará dividido en tres secciones principales:
   - **Servidor** (API REST en Flask)
   - **Cliente** (aplicación de consola en Python)
   - **DAOs** (objetos de acceso a datos para gestionar usuarios, mazos, cartas y partidas)
+
+## Requisitos del Proceso de Desarrollo
+
+### IDEs y Entorno de Desarrollo
+- **Visual Studio Code** como editor principal
+
+### Extensiones recomendadas para VSCode
+- **Python**: soporte completo para desarrollo en Python
+
+### Control de Versiones
+- **GitHub** como repositorio remoto para trabajo colaborativo y seguimiento del proyecto
+
+### Metodología de Desarrollo
+- Se sigue una **metodología ágil**, como **Scrum**, para desarrollar el proyecto en iteraciones cortas, permitiendo validar y ajustar funcionalidades continuamente en base a retroalimentación de usuarios reales.
+
+### Calidad y Pruebas (QA)
+- Se implementan **pruebas unitarias** para asegurar la calidad del código y verificar que cada módulo funcione correctamente de forma aislada.
