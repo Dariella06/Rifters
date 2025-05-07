@@ -2,7 +2,15 @@
 
 ### Descripción
 
-Crearemos un juego llamado **Rifters**, es un juego de cartas por turnos, inspirado en juegos como *Hearthstone*. El objetivo principal es permitir que dos jugadores se enfrenten en línea, cada uno utilizando un mazo de cartas propio. Los jugadores podrán iniciar sesión en la plataforma, visualizar sus cartas, modificar sus mazos y luego crear o unirse a una partida. Una vez que ambos jugadores estén conectados, la partida dará inicio y se desarrollará por turnos. Durante estos turnos, los jugadores utilizarán sus cartas estratégicamente para intentar vencer al oponente.
+**Rifters** será un juego de cartas por turnos, inspirado en títulos como *Hearthstone*. El objetivo principal es permitir que dos jugadores se enfrenten en línea, cada uno utilizando su propio mazo de cartas.
+
+Los jugadores podrán:
+- Iniciar sesión en la plataforma.
+- Visualizar y modificar sus cartas y mazos.
+- Crear o unirse a una partida.
+
+Una vez que ambos estén conectados, la partida comenzará y se desarrollará por turnos, permitiendo a cada jugador usar sus cartas de manera estratégica para derrotar al oponente.
+
 Nuestro sistema estará dividido en tres componentes principales:
 Cliente: Interfaaz donde los jugadores interactúan con el juego.
 Servidor: Lógica del juego, gestión de turnos, partidas y conexión con la base de datos.
