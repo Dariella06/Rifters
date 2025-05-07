@@ -41,11 +41,25 @@ Nuestro proyecto estará dividido en tres secciones principales:
 - Lenguaje de programación: **Python (consola)**
 
 
-# Requisitos Generales
+## Requisitos Generales
+### a. Gestión de Usuarios y Autenticación
+- **Roles de usuario**: Players (jugadores)
+- **Base de datos**: MySQL gestionada con PhpMyAdmin en el servidor
+- **Autenticación**: Inicio de sesión mediante usuario y contraseña con generación de **Token JWT**
+- **Seguridad**: Validación de cada petición protegida con el token. Expiración del token para mayor seguridad.
 
-### a. Gestión de usuarios y Auntenticación
-- **Roles de usuario**: Players
-- **Base de datos**: MySQL con PhpMyAdmin (servidor)
-- **Autenticación**: Inicio de sesión con usuario y contraseña mediante **Token JWT**
+### b. Almacenamiento Local y Sincronización
+- Aunque los datos principales se almacenan en la base de datos del servidor, algunos datos se guardan localmente para mejorar la experiencia del usuario:
+  - **Token JWT**
+  - **Nombre de usuario (nickname)**
+  - **Password**
+- Estos datos permiten mantener la sesión activa y validar acciones sin necesidad de múltiples peticiones de autenticación.
+- **Seguridad**: La validación de todas las acciones se hace a través del token para asegurar la identidad del usuario.
 
-
+## Requisitos de Infraestructura
+- **Red**: Conexión a Internet
+- **Conexión**: Comunicación entre cliente, daos y servidor, con acceso a la base de datos
+- **Estructura necesaria**:
+  - **Servidor** (API REST en Flask)
+  - **Cliente** (aplicación de consola en Python)
+  - **DAOs** (objetos de acceso a datos para gestionar usuarios, mazos, cartas y partidas)
