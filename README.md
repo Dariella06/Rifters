@@ -34,6 +34,18 @@ Nuestro proyecto estará dividido en tres secciones principales:
 ### c. Seguridad
 - **Autenticación del Token**: Utilizamos JWT (JSON Web Token) para gestionar la autenticación de los usuarios en la aplicación.
 
+# Frontend
 
+## a. Tipos de Clientes
+- Aplicación de consola en escritorio
+- Lenguaje de programación: **Python (consola)**
+
+
+# Requisitos Generales
+
+## a. Gestión de Usuarios y Autenticación
+- **Roles de usuario**: Players
+- **Base de datos**: MySQL con PhpMyAdmin (servidor)
+- **Autenticación**: Inicio de sesión con usuario y contraseña mediante **Token JWT**
 
 
