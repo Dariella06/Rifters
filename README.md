@@ -34,7 +34,7 @@ Nuestro proyecto estará dividido en tres secciones principales:
 ### c. Seguridad
 - **Autenticación del Token**: Utilizamos JWT (JSON Web Token) para gestionar la autenticación de los usuarios en la aplicación.
 
-# Frontend
+### Frontend
 
 ### a. Tipos de Clientes
 - Aplicación de consola en escritorio
