@@ -36,7 +36,7 @@ En este apartado se muestra el Modelo E/R de nuestro proyecto, donde se puede ve
 
 A continuación se presentan los diagramas que describen la arquitectura del sistema desde dos perspectivas: **Cliente** y **Servidor**. Estos esquemas muestran los componentes principales y el flujo de información entre ellos, facilitando la comprensión de cómo interactúan ambos lados de la aplicación.
 
-### 🔹 Arquitectura del Cliente
+### Arquitectura del Cliente
 
 El siguiente diagrama muestra cómo se organiza la lógica del cliente, desde la interfaz de usuario hasta la gestión de peticiones al servidor.
 
@@ -45,7 +45,7 @@ El siguiente diagrama muestra cómo se organiza la lógica del cliente, desde la
 ![Diagrama Cliente](imagenes/cliente.jpg)
 
 
-### 🔹 Arquitectura del Servidor
+### Arquitectura del Servidor
 
 Este diagrama representa la estructura interna del servidor, incluyendo la API, la lógica del negocio y el acceso a la base de datos.
 
