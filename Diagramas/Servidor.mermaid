@@ -1,0 +1,12 @@
+flowchart TD
+    subgraph Server["Servidor"]
+        C["Webservice API <br> Flask endpoints"] -->|Consulta lógica| N["Server Logic <br> Reglas y validaciones"]
+        N -->|Acceso a datos| D["Server DAO <br> Interfaces con base de datos"]
+        D -->|Consulta base de datos| DB["Base de Datos <br> PostgreSQL / SQLite"]
+        DB -->|Datos requeridos| D
+        D -->|Objeto procesado| N
+        N -->|Respuesta lista| C
+    end
+
+    class C,N,D server;
+    class DB db;
