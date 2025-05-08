@@ -28,7 +28,7 @@ Enlace de ver los requerimientos:
 
 ## Modelo E/R
 
-En este apartado se muestra el Modelo E/R de nuestro proyecto, donde se puede ver la estructura de la base de datos.
+En este apartado se muestra el Modelo E/R de nuestro proyecto, donde se puede ver la estructura de la base de datos. El diagrama representa la relación entre las distintas entidades involucradas, así como sus atributos y las conexiones lógicas que existen entre ellas. 
 
 ![Modelo E/R](imagenes/image.png)
 
