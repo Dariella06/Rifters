@@ -36,5 +36,8 @@ En este apartado se muestra el Modelo E/R de nuestro proyecto, donde se puede ve
 En este apartado se muestra el diagrama que representa la estructura tanto del cliente como del servidor, así como la relación entre ellos.
 
 [Diagrama de Cliente](Diagramas/Cliente.mermaid)
+[Cliente](imagenes/cliente.jpg)
 
 [Diagrama de Servidor](Diagramas/Servidor.mermaid)
+[Cliente](imagenes/server.jpg)
+
