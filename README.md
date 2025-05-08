@@ -32,14 +32,23 @@ En este apartado se muestra el Modelo E/R de nuestro proyecto, donde se puede ve
 
 ![Modelo E/R](imagenes/image.png)
 
-## Diagramas de arquitectura Cliente / Servidor
-En este apartado se muestra el diagrama que representa la estructura tanto del cliente como del servidor, así como la relación entre ellos.
+## Diagramas de Arquitectura Cliente / Servidor
 
-[Diagrama de Cliente](Diagramas/Cliente.mermaid)
+A continuación se presentan los diagramas que describen la arquitectura del sistema desde dos perspectivas: **Cliente** y **Servidor**. Estos esquemas muestran los componentes principales y el flujo de información entre ellos, facilitando la comprensión de cómo interactúan ambos lados de la aplicación.
 
-![Cliente](imagenes/cliente.jpg)
+### 🔹 Arquitectura del Cliente
 
-[Diagrama de Servidor](Diagramas/Servidor.mermaid)
+El siguiente diagrama muestra cómo se organiza la lógica del cliente, desde la interfaz de usuario hasta la gestión de peticiones al servidor.
 
-![Cliente](imagenes/server.jpg)
+[Ver archivo Mermaid del Cliente](Diagramas/Cliente.mermaid)
 
+![Diagrama Cliente](imagenes/cliente.jpg)
+
+
+### 🔹 Arquitectura del Servidor
+
+Este diagrama representa la estructura interna del servidor, incluyendo la API, la lógica del negocio y el acceso a la base de datos.
+
+[Ver archivo Mermaid del Servidor](Diagramas/Servidor.mermaid)
+
+![Diagrama Servidor](imagenes/server.jpg)
