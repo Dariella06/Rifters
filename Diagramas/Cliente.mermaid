@@ -1,8 +1,10 @@
-flowchart TD
-    subgraph Client["Client"]
-        A["Vista UI <br> Representa la entrada del usuario"] -->|Interacción| B["Client API <br> Gestiona peticiones al servidor"]
-        B -->|Consulta lógica local| M["Client Logic <br> Procesamiento local (si aplica)"]
-        B -->|Devuelve datos procesados| A
-    end
+sequenceDiagram
+    participant UI as Vista UI
+    participant ClientAPI as Client API
+    participant ClientLogic as Client Logic
 
-    class A,B,M client;
+    UI->>ClientAPI: Usuario solicita información
+    ClientAPI->>ClientLogic: Consulta lógica local (si aplica)
+    ClientLogic-->>ClientAPI: Resultado o paso a siguiente
+    ClientAPI-->>UI: Muestra resultados al usuario (si es local)
+    ClientAPI->>Servidor: Petición HTTP (si no es local)
