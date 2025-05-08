@@ -35,4 +35,5 @@ En este apartado se muestra el Modelo E/R de nuestro proyecto, donde se puede ve
 ## Diagramas de arquitectura Cliente / Servidor
 En este apartado se muestra el diagrama que representa la estructura tanto del cliente como del servidor, así como la relación entre ellos.
 
-[Diagrama de ](https://github.com/Dariella06/Rifters/blob/main/Diagramas/Cliente.mermaid)
+[Diagrama de Cliente](https://github.com/Dariella06/Rifters/blob/main/Diagramas/Cliente.mermaid)
+[Diagrama de Cliente](Diagramas/Servidor.mermaid)
