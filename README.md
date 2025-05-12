@@ -52,3 +52,13 @@ Este diagrama representa la estructura interna del servidor, incluyendo la API, 
 [Ver archivo Mermaid del Servidor](Diagramas/Servidor.mermaid)
 
 ![Diagrama Servidor](imagenes/server.jpg)
+
+
+### Descripció dels End-points del WebService
+
+### Diagrama de classes del Backend
+
+### Diagrama de seqüència del Login
+
+
+### Wireframes del Login i les següents pantalles
