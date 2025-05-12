@@ -1,32 +1,48 @@
 flowchart TD
-    Inicio --> Menu["Menú principal"]
-    Menu --> Login["Iniciar sesión"]
-    Menu --> Registro["Registrarse"]
-    Menu --> Fin["Salir"]
+    Inicio[Inicio del programa] --> MenuInicio["Menú de Inicio"]
+    
+    MenuInicio --> Registro["Registrarse"]
+    MenuInicio --> Salir["Salir (exit)"]
+    MenuInicio --> Login["Iniciar sesión"]
 
-    Login --> Principal["Menú usuario"]
-    Registro --> Menu
+    Registro --> MenuInicio
+    Login --> Autenticado["¿Autenticación exitosa?"]
+    Autenticado -- Sí --> MenuPrincipal["Menú Principal"]
+    Autenticado -- No --> MenuInicio
 
-    Principal --> Mazos
-    Principal --> Partidas
-    Principal --> Menu
+    MenuPrincipal --> GestionarMazos["Gestionar Mazos"]
+    MenuPrincipal --> JugarPartida["Jugar Partida"]
+    MenuPrincipal --> CerrarSesion["Cerrar sesión"]
 
-    Mazos --> VerMazos["Ver mazos"]
-    Mazos --> CrearMazo["Nuevo mazo"]
-    Mazos --> AñadirCarta["Añadir carta"]
-    Mazos --> VerCartas["Ver cartas"]
-    Mazos --> EliminarMazo["Eliminar mazo"]
-    Mazos --> Principal
+    CerrarSesion --> TokenEliminado["Eliminar token"]
+    TokenEliminado --> MenuInicio
 
-    Partidas --> NuevaPartida["Crear partida"]
-    Partidas --> VerPartidas["Ver partidas"]
-    Partidas --> UnirsePartida["Unirse"]
-    Partidas --> Principal
+    subgraph Gestión de Mazos
+        GestionarMazos --> VerMazos["Ver mis mazos"]
+        GestionarMazos --> CrearMazo["Crear nuevo mazo"]
+        GestionarMazos --> AñadirCarta["Añadir carta a mazo"]
+        GestionarMazos --> VerCartas["Ver cartas disponibles"]
+        GestionarMazos --> EliminarMazo["Eliminar un mazo"]
+        VerMazos --> GestionarMazos
+        CrearMazo --> GestionarMazos
+        AñadirCarta --> GestionarMazos
+        VerCartas --> GestionarMazos
+        EliminarMazo --> GestionarMazos
+    end
 
-    NuevaPartida --> Juego
-    UnirsePartida --> Juego
+    subgraph Gestión de Partidas
+        JugarPartida --> CrearPartida["Crear nueva partida"]
+        JugarPartida --> VerPartidas["Ver partidas disponibles"]
+        JugarPartida --> UnirsePartida["Unirse a partida"]
 
-    Juego --> Estado["Estado partida"]
-    Juego --> Accion["Acción"]
-    Juego --> Rendirse["Rendirse"]
-    Rendirse --> Partidas
+        CrearPartida --> MenuJuego
+        UnirsePartida --> MenuJuego
+        VerPartidas --> JugarPartida
+    end
+
+    subgraph MenuJuego["Menú de Juego"]
+        MenuJuego --> VerEstado["Ver estado de la partida"]
+        MenuJuego --> Accion["Realizar acción"]
+        MenuJuego --> Rendirse["Rendirse / Abandonar"]
+        Rendirse --> JugarPartida
+    end
