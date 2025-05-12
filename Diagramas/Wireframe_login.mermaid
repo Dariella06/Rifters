@@ -1,31 +1,32 @@
 flowchart TD
-    Inicio[Inicio del programa] --> MenuInicio[Menú de inicio]
-    MenuInicio --> |"1. Iniciar sesión"| IniciarSesion[Iniciar sesión]
-    MenuInicio --> |"2. Registrarse"| Registrarse[Registro de usuario]
-    IniciarSesion --> |"Autenticación correcta"| MenuPrincipal[Menú principal]
-    Registrarse --> MenuInicio
-    MenuInicio --> |"3. Salir"| Fin[Fin del programa]
+    Inicio --> Menu["Menú principal"]
+    Menu --> Login["Iniciar sesión"]
+    Menu --> Registro["Registrarse"]
+    Menu --> Fin["Salir"]
 
-    MenuPrincipal --> |"1. Gestionar mazos"| MenuMazos[Menú de mazos]
-    MenuPrincipal --> |"2. Jugar partida"| MenuPartidas[Menú de partidas]
-    MenuPrincipal --> |"3. Cerrar sesión"| MenuInicio
+    Login --> Principal["Menú usuario"]
+    Registro --> Menu
 
-    MenuMazos --> |"1. Ver mis mazos"| VerMazos[Mostrar mazos]
-    MenuMazos --> |"2. Crear nuevo mazo"| CrearMazo[Crear mazo]
-    MenuMazos --> |"3. Añadir carta a mazo"| AñadirCarta[Añadir carta]
-    MenuMazos --> |"4. Ver cartas disponibles"| VerCartas[Mostrar cartas]
-    MenuMazos --> |"5. Eliminar un mazo"| EliminarMazo[Eliminar mazo]
-    MenuMazos --> |"6. Volver al menú principal"| MenuPrincipal
+    Principal --> Mazos
+    Principal --> Partidas
+    Principal --> Menu
 
-    MenuPartidas --> |"1. Crear nueva partida"| CrearPartida[Crear partida]
-    MenuPartidas --> |"2. Ver partidas disponibles"| VerPartidas[Mostrar partidas]
-    MenuPartidas --> |"3. Unirse a partida"| UnirsePartida[Unirse a partida]
-    MenuPartidas --> |"4. Volver al menú principal"| MenuPrincipal
+    Mazos --> VerMazos["Ver mazos"]
+    Mazos --> CrearMazo["Nuevo mazo"]
+    Mazos --> AñadirCarta["Añadir carta"]
+    Mazos --> VerCartas["Ver cartas"]
+    Mazos --> EliminarMazo["Eliminar mazo"]
+    Mazos --> Principal
 
-    CrearPartida --> MenuJuego[Menú de juego]
-    UnirsePartida --> MenuJuego
+    Partidas --> NuevaPartida["Crear partida"]
+    Partidas --> VerPartidas["Ver partidas"]
+    Partidas --> UnirsePartida["Unirse"]
+    Partidas --> Principal
 
-    MenuJuego --> |"1. Ver estado de la partida"| Estado[Mostrar estado]
-    MenuJuego --> |"2. Realizar acción"| Accion[Acción en partida]
-    MenuJuego --> |"3. Rendirse/Abandonar"| Rendirse[Abandonar partida]
-    Rendirse --> MenuPartidas
+    NuevaPartida --> Juego
+    UnirsePartida --> Juego
+
+    Juego --> Estado["Estado partida"]
+    Juego --> Accion["Acción"]
+    Juego --> Rendirse["Rendirse"]
+    Rendirse --> Partidas
