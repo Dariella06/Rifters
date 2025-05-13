@@ -42,7 +42,7 @@ El siguiente diagrama muestra cómo se organiza la lógica del cliente, desde la
 
 [Ver archivo Mermaid del Cliente](Diagramas/Cliente.mermaid)
 
-<img src="imagenes/cliente.jpg" alt="Diagrama del cliente" width="850" height="470"/>
+<img src="imagenes/cliente.jpg" alt="Diagrama del cliente" width="850" height="430"/>
 
 ### Arquitectura del Servidor
 
