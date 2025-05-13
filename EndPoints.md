@@ -1,26 +1,21 @@
-## Definición de EndPoints del WebService
-En este apartado, detallamos los endpoints del servicio web basado en el código proporcionado:
+# WebService – Definición de EndPoints
 
-**Host Base**
-http://192.168.144.199:10050
+**Host Base:**  
+`http://192.168.144.199:10050`
 
-## Endpoints
-1. Obtener datos de un usuario
-Descripción: Obtiene información de un usuario específico
 
-Endpoint: /prototip1/getuser
+## 1. Obtener datos de un usuario
 
-**Método**: GET
+| Descripción              | End-point              | Método | Tipo de petición   | Parámetros           |
+|--------------------------|------------------------|--------|---------------------|-----------------------|
+| Obtener datos de usuario | `/prototip1/getuser`   | GET    | `application/json`  | `username` (string)   |
 
-Tipo de petición: application/json
+**URL de prueba:**  
+`http://192.168.144.199:10050/prototip1/getuser?username=usuari1`
 
-Parámetros:
+### Respuestas
 
-username (string): Nombre de usuario a buscar
-
-Respuestas posibles:
-Usuario encontrado (200 OK):
-
+**200 OK – Usuario encontrado**
 ```json
 {
   "email": "prova@gmail.com",
@@ -30,12 +25,7 @@ Usuario encontrado (200 OK):
 }
 ```
 
-Errores:
-
-400 Bad Request:
-
-Usuario no encontrado:
-
+**400 Bad Request – Usuario no encontrado**
 ```json
 {
   "description": "Usuari no trobat",
@@ -43,8 +33,7 @@ Usuario no encontrado:
 }
 ```
 
-Falta parámetro username:
-
+**400 Bad Request – Falta parámetro**
 ```json
 {
   "description": "Falta paràmetre Username",
@@ -52,8 +41,7 @@ Falta parámetro username:
 }
 ```
 
-Error del servidor:
-
+**400 Bad Request – Error de servidor**
 ```json
 {
   "description": "Server Error",
@@ -61,80 +49,54 @@ Error del servidor:
 }
 ```
 
-URL de prueba:
-http://192.168.144.199:10050/prototip1/getuser?username=usuari1
-2. Registro de usuario
-Descripción: Crea un nuevo usuario en el sistema
 
-Endpoint: /register
+## 2. Registrar nuevo usuario
 
-Método: POST
+| Descripción        | End-point   | Método | Tipo de petición   | Parámetros                          |
+|--------------------|-------------|--------|---------------------|--------------------------------------|
+| Registrar usuario  | `/register` | POST   | `application/json`  | `username`, `password`, `email`     |
 
-Tipo de petición: application/json
+### Respuestas
 
-Parámetros:
-
-username (string): Nombre de usuario
-
-password (string): Contraseña
-
-email (string): Correo electrónico
-
-Respuestas posibles:
-Registro exitoso (201 Created):
-
+**201 Created – Registro exitoso**
 ```json
 {
   "message": "Usuario registrado exitosamente",
   "user_id": 5
 }
 ```
-Errores:
 
-400 Bad Request:
-
-Campos faltantes:
-
+**400 Bad Request – Campos faltantes**
 ```json
 {
   "error": "Todos los campos son requeridos"
 }
 ```
 
-Error al registrar:
-
+**400 Bad Request – Error al registrar**
 ```json
 {
   "error": "Error al registrar usuario"
 }
 ```
 
-500 Internal Server Error:
-
+**500 Internal Server Error**
 ```json
 {
   "error": "Error en el registro: [mensaje de error]"
 }
 ```
 
-3. Inicio de sesión
-Descripción: Autentica a un usuario y devuelve un token JWT
 
-Endpoint: /login
+## 3. Inicio de sesión
 
-Método: POST
+| Descripción       | End-point | Método | Tipo de petición   | Parámetros                    |
+|-------------------|-----------|--------|---------------------|-------------------------------|
+| Iniciar sesión    | `/login`  | POST   | `application/json`  | `username`, `password`        |
 
-Tipo de petición: application/json
+### Respuestas
 
-Parámetros:
-
-username (string): Nombre de usuario
-
-password (string): Contraseña
-
-Respuestas posibles:
-Login exitoso (200 OK):
-
+**200 OK – Inicio exitoso**
 ```json
 {
   "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
@@ -144,52 +106,37 @@ Login exitoso (200 OK):
 }
 ```
 
-Errores:
-
-400 Bad Request:
-
-Campos faltantes:
-
+**400 Bad Request – Campos requeridos**
 ```json
 {
   "error": "Usuario y contraseña requeridos"
 }
 ```
 
-401 Unauthorized:
-
-Credenciales incorrectas:
-
+**401 Unauthorized – Credenciales incorrectas**
 ```json
 {
   "error": "Credenciales incorrectas"
 }
 ```
 
-500 Internal Server Error:
-
+**500 Internal Server Error**
 ```json
 {
   "error": "Error en el servidor: [mensaje de error]"
 }
 ```
 
-4. Obtener cartas disponibles
-Descripción: Lista todas las cartas disponibles en el juego
 
-Endpoint: /cards
+## 4. Obtener cartas disponibles
 
-Método: GET
+| Descripción               | End-point  | Método | Tipo de petición   | Headers                          |
+|---------------------------|------------|--------|---------------------|----------------------------------|
+| Listar cartas disponibles | `/cards`   | GET    | `application/json`  | `Authorization: Bearer <token>` |
 
-Tipo de petición: application/json
+### Respuestas
 
-Headers:
-
-Authorization: Bearer <token>
-
-Respuestas posibles:
-Éxito (200 OK):
-
+**200 OK**
 ```json
 [
   {
@@ -199,158 +146,59 @@ Respuestas posibles:
     "cost": 5,
     "attack": 7,
     "defense": 6
-  },
+  }
 ]
 ```
 
-Errores:
+**401 Unauthorized – Token inválido**
 
-401 Unauthorized: Token inválido o faltante
-
-404 Not Found:
-
+**404 Not Found**
 ```json
 {
   "message": "No hay cartas disponibles"
 }
 ```
 
-500 Internal Server Error:
-
+**500 Internal Server Error**
 ```json
 {
   "error": "Error obteniendo cartas: [mensaje de error]"
 }
 ```
 
-5. Gestión de mazos
-5.1 Obtener mazos del usuario
-Endpoint: /decks
 
-Método: GET
 
-Headers:
+## 5. Gestión de mazos
 
-Authorization: Bearer <token>
+| Acción                | End-point                        | Método  | Tipo de petición   | Headers / Body                             |
+|-----------------------|----------------------------------|---------|---------------------|---------------------------------------------|
+| Obtener mazos         | `/decks`                         | GET     | `application/json`  | Header: `Authorization: Bearer <token>`     |
+| Crear nuevo mazo      | `/decks`                         | POST    | `application/json`  | Body: `{ "name": "Mi nuevo mazo" }`         |
+| Eliminar mazo         | `/decks/<deck_id>`               | DELETE  | `application/json`  | Header: `Authorization: Bearer <token>`     |
+| Añadir carta a mazo   | `/decks/<deck_id>/cards`         | POST    | `application/json`  | Body: `{ "card_id": 5, "quantity": 2 }`     |
 
-5.2 Crear nuevo mazo
-Endpoint: /decks
 
-Método: POST
 
-Headers:
+## 6. Gestión de partidas
 
-Authorization: Bearer <token>
+| Acción                  | End-point                            | Método  | Tipo de petición   | Headers / Body                                |
+|-------------------------|---------------------------------------|---------|---------------------|------------------------------------------------|
+| Obtener partidas        | `/matches`                            | GET     | `application/json`  | Header: `Authorization: Bearer <token>`       |
+| Crear nueva partida     | `/matches`                            | POST    | `application/json`  | Body: `{ "deck_id": 3 }`                      |
+| Unirse a partida        | `/matches/<match_id>/join`            | POST    | `application/json`  | Body: `{ "deck_id": 3 }`                      |
+| Obtener estado actual   | `/matches/current`                    | GET     | `application/json`  | Header: `Authorization: Bearer <token>`       |
+| Realizar acción         | `/matches/action`                     | POST    | `application/json`  | Ver ejemplos abajo                            |
 
-Body:
+### Cuerpos de ejemplo para acciones
 
-```json
-{
-  "name": "Mi nuevo mazo"
-}
-```
-
-5.3 Eliminar mazo
-Endpoint: /decks/<int:deck_id>
-
-Método: DELETE
-
-Headers:
-
-Authorization: Bearer <token>
-
-5.4 Añadir carta a mazo
-Endpoint: /decks/<int:deck_id>/cards
-
-Método: POST
-
-Headers:
-
-Authorization: Bearer <token>
-
-Body:
-
-```json
-{
-  "card_id": 5,
-  "quantity": 2
-}
-```
-
-6. Gestión de partidas
-6.1 Obtener partidas disponibles
-Endpoint: /matches
-
-Método: GET
-
-Headers:
-
-Authorization: Bearer <token>
-
-6.2 Crear nueva partida
-Endpoint: /matches
-
-Método: POST
-
-Headers:
-
-Authorization: Bearer <token>
-
-Body:
-
-```json
-{
-  "deck_id": 3
-}
-```
-
-6.3 Unirse a partida
-Endpoint: /matches/<int:match_id>/join
-
-Método: POST
-
-Headers:
-
-Authorization: Bearer <token>
-
-Body:
-
-```json
-{
-  "deck_id": 3
-}
-```
-
-6.4 Obtener estado de partida actual
-Endpoint: /matches/current
-
-Método: GET
-
-Headers:
-
-Authorization: Bearer <token>
-
-6.5 Realizar acción en partida
-Endpoint: /matches/action
-
-Método: POST
-
-Headers:
-
-Authorization: Bearer <token>
-
-Body (ejemplos):
-
-Pasar turno:
-
+**Pasar turno**
 ```json
 {
   "action": "end_turn"
 }
 ```
 
-Jugar carta:
-
+**Jugar carta**
 ```json
 {
   "action": "play_card",
