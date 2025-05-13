@@ -64,7 +64,8 @@ Para que el servidor funcione bien, conectamos varias clases DAO que se encargan
 
 [Ver archivo del Diagrama del Backend](Diagramas/DiagramaBackend.mermaid)
 
-![Diagrama](imagenes/Backend.png)
+<img src="imagenes/Backend.png" alt="Diagrama del servidor" width="400" height="300"/>
+
 
 ### Diagrama de seqüència del Login
 
