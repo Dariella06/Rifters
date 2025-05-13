@@ -58,6 +58,11 @@ Este diagrama representa la estructura interna del servidor, incluyendo la API, 
 
 ### Diagrama de classes del Backend
 
+En este diagrama mostramos cómo organizamos nuestro servidor para el juego de cartas. Nosotros usamos un WebServer que tiene varios endpoints (como para registrarse, iniciar sesión, crear mazos, etc).
+
+Para que el servidor funcione bien, conectamos varias clases DAO que se encargan de manejar los datos de usuarios, cartas, mazos y partidas. Cada DAO está relacionado con una entidad (User, Card, Deck, Match), y así separamos la lógica del servidor de la lógica de acceso a datos.
+![DiagramaBackend](Diagramas/DiagramaBackend.mermaid)
+
 ### Diagrama de seqüència del Login
 
 
