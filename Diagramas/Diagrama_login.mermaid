@@ -1,48 +1,19 @@
-flowchart TD
-    Inicio[Inicio del programa] --> MenuInicio["Menú de Inicio"]
+sequenceDiagram
+    participant Cliente as Cliente
+    participant Servidor as Servidor
+    participant DAOUsers as DAOUsers
+    participant BD as Base de Datos
+
+    Cliente->>Servidor: POST /login (username, password)
+    Servidor->>DAOUsers: getUserByUsernameAndPassword(username, password)
+    DAOUsers->>BD: SELECT * FROM usuarios WHERE username=? AND password=?
+    BD-->>DAOUsers: Resultado (usuario o null)
+    DAOUsers-->>Servidor: Objeto usuario o null
     
-    MenuInicio --> Registro["Registrarse"]
-    MenuInicio --> Salir["Salir (exit)"]
-    MenuInicio --> Login["Iniciar sesión"]
-
-    Registro --> MenuInicio
-    Login --> Autenticado["¿Autenticación exitosa?"]
-    Autenticado -- Sí --> MenuPrincipal["Menú Principal"]
-    Autenticado -- No --> MenuInicio
-
-    MenuPrincipal --> GestionarMazos["Gestionar Mazos"]
-    MenuPrincipal --> JugarPartida["Jugar Partida"]
-    MenuPrincipal --> CerrarSesion["Cerrar sesión"]
-
-    CerrarSesion --> TokenEliminado["Eliminar token"]
-    TokenEliminado --> MenuInicio
-
-    subgraph Gestión de Mazos
-        GestionarMazos --> VerMazos["Ver mis mazos"]
-        GestionarMazos --> CrearMazo["Crear nuevo mazo"]
-        GestionarMazos --> AñadirCarta["Añadir carta a mazo"]
-        GestionarMazos --> VerCartas["Ver cartas disponibles"]
-        GestionarMazos --> EliminarMazo["Eliminar un mazo"]
-        VerMazos --> GestionarMazos
-        CrearMazo --> GestionarMazos
-        AñadirCarta --> GestionarMazos
-        VerCartas --> GestionarMazos
-        EliminarMazo --> GestionarMazos
-    end
-
-    subgraph Gestión de Partidas
-        JugarPartida --> CrearPartida["Crear nueva partida"]
-        JugarPartida --> VerPartidas["Ver partidas disponibles"]
-        JugarPartida --> UnirsePartida["Unirse a partida"]
-
-        CrearPartida --> MenuJuego
-        UnirsePartida --> MenuJuego
-        VerPartidas --> JugarPartida
-    end
-
-    subgraph MenuJuego["Menú de Juego"]
-        MenuJuego --> VerEstado["Ver estado de la partida"]
-        MenuJuego --> Accion["Realizar acción"]
-        MenuJuego --> Rendirse["Rendirse / Abandonar"]
-        Rendirse --> JugarPartida
+    alt Credenciales válidas
+        Servidor->>Servidor: generar_token(user_id)
+        Servidor-->>Cliente: 200 OK (token, user_id, username)
+        Cliente->>Cliente: guardar_token(token_data)
+    else Credenciales inválidas
+        Servidor-->>Cliente: 401 Unauthorized (error)
     end
