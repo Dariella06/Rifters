@@ -200,7 +200,6 @@ Respuestas posibles:
     "attack": 7,
     "defense": 6
   },
-  ...
 ]
 ```
 
