@@ -1,19 +1,19 @@
 sequenceDiagram
-    participant Cliente as Cliente
-    participant Servidor as Servidor
-    participant DAOUsers as DAOUsers
-    participant BD as Base de Datos
+    participant Cliente
+    participant Servidor
+    participant DAOUsers
+    participant BD as BaseDatos
 
-    Cliente->>Servidor: POST /login (username, password)
-    Servidor->>DAOUsers: getUserByUsernameAndPassword(username, password)
-    DAOUsers->>BD: SELECT * FROM usuarios WHERE username=? AND password=?
-    BD-->>DAOUsers: Resultado (usuario o null)
-    DAOUsers-->>Servidor: Objeto usuario o null
-    
-    alt Credenciales válidas
-        Servidor->>Servidor: generar_token(user_id)
-        Servidor-->>Cliente: 200 OK (token, user_id, username)
-        Cliente->>Cliente: guardar_token(token_data)
-    else Credenciales inválidas
-        Servidor-->>Cliente: 401 Unauthorized (error)
+    Cliente->>Servidor: Enviar login (usuario, contraseña)
+    Servidor->>DAOUsers: Buscar usuario con esos datos
+    DAOUsers->>BaseDatos: SELECT * FROM usuarios WHERE username=? AND password=?
+    BaseDatos-->>DAOUsers: Devuelve el usuario o nada
+    DAOUsers-->>Servidor: Usuario encontrado o null
+
+    alt Datos correctos
+        Servidor->>Servidor: Crear token para ese usuario
+        Servidor-->>Cliente: OK (token, id, nombre de usuario)
+        Cliente->>Cliente: Guardar el token
+    else Datos incorrectos
+        Servidor-->>Cliente: Error 401 (no autorizado)
     end
