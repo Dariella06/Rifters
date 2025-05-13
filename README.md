@@ -42,7 +42,7 @@ El siguiente diagrama muestra cómo se organiza la lógica del cliente, desde la
 
 [Ver archivo Mermaid del Cliente](Diagramas/Cliente.mermaid)
 
-<img src="imagenes/cliente.jpg" alt="Diagrama del cliente" width="850" height="570"/>
+<img src="imagenes/cliente.jpg" alt="Diagrama del cliente" width="850" height="470"/>
 
 ### Arquitectura del Servidor
 
@@ -50,7 +50,7 @@ Este diagrama representa la estructura interna del servidor, incluyendo la API, 
 
 [Ver archivo Mermaid del Servidor](Diagramas/Servidor.mermaid)
 
-<img src="imagenes/server.jpg" alt="Diagrama del servidor" width="850" height="570"/>
+<img src="imagenes/server.jpg" alt="Diagrama del servidor" width="850" height="470"/>
 
 
 ### Descripció dels End-points del WebService
