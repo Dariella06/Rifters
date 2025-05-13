@@ -65,9 +65,9 @@ Para que el servidor funcione bien, conectamos varias clases DAO que se encargan
 <img src="imagenes/Backend.png" alt="Diagrama del servidor" width="850" height="570"/>
 
 
-### Diagrama de seqüència del Login
+### Diagrama de Secuencia del Login
 Este diagrama muestra cómo usamos la app: empezamos en un menú donde podemos registrarnos o iniciar sesión. Si entramos, llegamos al menú principal donde elegimos entre gestionar mazos o jugar partidas. También podemos cerrar sesión y volver al inicio.
-[Ver archivo de Mermaid del Diagrama de seqüencia de Login](Diagramas/Diagrama_Sequencia_login.mermaid)
+[Ver archivo de Mermaid del Diagrama de Secuencia de Login](Diagramas/Diagrama_Sequencia_login.mermaid)
 
-<img src="imagenes/secuencia.png" alt="Diagrama del Login" width="850" height="470"/>
+<img src="imagenes/Secuencia_Login.png" alt="Diagrama del Login" width="850" height="470"/>
 ### Wireframes del Login i les següents pantalles
