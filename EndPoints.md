@@ -10,7 +10,7 @@ Descripción: Obtiene información de un usuario específico
 
 Endpoint: /prototip1/getuser
 
-Método: GET
+**Método**: GET
 
 Tipo de petición: application/json
 
