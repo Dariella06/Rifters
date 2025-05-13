@@ -34,11 +34,11 @@ En este apartado se muestra el Modelo E/R de nuestro proyecto, donde se puede ve
 
 ## Diagramas de Arquitectura Cliente / Servidor
 
-A continuación se presentan los diagramas que describen la arquitectura del sistema desde dos perspectivas: **Cliente** y **Servidor**. Estos esquemas muestran los componentes principales y el flujo de información entre ellos, facilitando la comprensión de cómo interactúan ambos lados de la aplicación.
+Aquí verá diagramas que describen la arquitectura del sistema desde dos perspectivas: cliente y servidor. Estos diagramas muestran los principales componentes y el flujo de información entre ellos, facilitando la comprensión de cómo se conectan los dos lados del juego.
 
 ### Arquitectura del Cliente
 
-El siguiente diagrama muestra cómo se organiza la lógica del cliente, desde la interfaz de usuario hasta la gestión de peticiones al servidor.
+El siguiente diagrama muestra cómo organizamos la lógica del cliente, desde la interfaz de usuario hasta la gestión de peticiones al servidor.
 
 [Ver archivo Mermaid del Cliente](Diagramas/Cliente.mermaid)
 
@@ -46,7 +46,7 @@ El siguiente diagrama muestra cómo se organiza la lógica del cliente, desde la
 
 ### Arquitectura del Servidor
 
-Este diagrama representa la estructura interna del servidor, incluyendo la API, la lógica del negocio y el acceso a la base de datos.
+El siguiente diagrama muestra la estructura interna del servidor, incluida la API, la lógica empresarial y el acceso a la base de datos.
 
 [Ver archivo Mermaid del Servidor](Diagramas/Servidor.mermaid)
 
@@ -56,9 +56,9 @@ Este diagrama representa la estructura interna del servidor, incluyendo la API, 
 ## Descripció dels End-points del WebService
 
 ## Diagrama de classes del Backend
-En este diagrama mostramos cómo organizamos nuestro servidor para el juego de cartas. Nosotros usamos un WebServer que tiene varios atributos (como para registrarse, iniciar sesión, crear mazos, etc).
+La imagen a continuación muestra cómo configuramos el servidor del juego de cartas. Utilizamos un servidor web que realiza diversas funciones (como registro, registro, recolección, etc.).
 
-Para que el servidor funcione bien, conectamos varias clases DAO que se encargan de manejar los datos de usuarios, cartas, mazos y partidas. Cada DAO está relacionado con una entidad (User, Card, Deck, Match), y así separamos la lógica del servidor de la lógica de acceso a datos.
+Para que el servidor funcione correctamente, definimos varias tablas DAO para almacenar información sobre el usuario, la carta, el mazo y el juego. Cada DAO está asociado a un grupo (Usuario, Carta, Baraja, Partida), por lo que separamos la lógica del servidor de la lógica de acceso a los datos.
 
 [Ver archivo del Diagrama del Backend](Diagramas/DiagramaBackend.mermaid)
 
@@ -66,7 +66,7 @@ Para que el servidor funcione bien, conectamos varias clases DAO que se encargan
 
 
 ## Diagrama de Secuencia del Login
-Este diagrama muestra cómo usamos la app: empezamos en un menú donde podemos registrarnos o iniciar sesión. Si entramos, llegamos al menú principal donde elegimos entre gestionar mazos o jugar partidas. También podemos cerrar sesión y volver al inicio.
+El siguiente ejemplo muestra cómo utilizamos para el juego: Comienza desde el menú donde podrás registrarte o iniciar sesión, una vez que inicies sesión, serás llevado al menú principal donde podrás elegir entre administrar los mazos o las partidas. También puedes volver al inicio al final de la sesión.
 
 [Ver archivo de Mermaid del Diagrama de Secuencia de Login](Diagramas/Diagrama_Sequencia_login.mermaid)
 
