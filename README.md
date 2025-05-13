@@ -38,7 +38,7 @@ Aquí verá diagramas que describen la arquitectura del sistema desde dos perspe
 
 ### Arquitectura del Cliente
 
-El siguiente diagrama muestra cómo organizamos la lógica del cliente, desde la interfaz de usuario hasta la gestión de peticiones al servidor.
+El siguiente diagrama muestra cómo organizamos la lógica de los dos clientes, desde la interfaz de usuario hasta la gestión de peticiones al servidor.
 
 [Ver archivo Mermaid del Cliente](Diagramas/Cliente.mermaid)
 
