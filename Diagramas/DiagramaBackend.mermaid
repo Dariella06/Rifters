@@ -1,0 +1,83 @@
+classDiagram
+    class WebServer {
+        +POST /register
+        +POST /login
+        +GET /cards
+        +GET, POST /decks
+        +DELETE /decks/<deck_id>
+        +POST /decks/<deck_id>/cards
+        +GET, POST /matches
+        +POST /matches/<match_id>/join
+        +GET /matches/current
+        +POST /matches/action
+        +GET /debug/matches
+    }
+
+    class DAOUsers {
+        +addUser(username, password, email)
+        +getUserByID(user_id)
+        +getUserByUsernameAndPassword(username, password)
+    }
+
+    class DAOCards {
+        +getAvailableCards()
+    }
+
+    class DAODecks {
+        +getDecksByUser(user_id)
+        +addDeck(user_id, name)
+        +deleteDeck(deck_id, user_id)
+        +getDeckByID(deck_id)
+        +getCardsByDeck(deck_id)
+        +addCardToDeck(deck_id, card_id, quantity)
+    }
+
+    class DAOMatches {
+        +getWaitingMatches()
+        +getPlayerMatches(user_id)
+        +createMatch(user_id, deck_id)
+        +joinMatch(match_id, user_id, deck_id)
+        +getMatchState(match_id, user_id)
+        +endTurn(match_id, user_id)
+        +playCard(match_id, user_id, card_id)
+    }
+
+    class User {
+        +int id
+        +string username
+        +string password
+        +string email
+    }
+
+    class Card {
+        +int id
+        +string name
+        +string type
+        +string effect
+    }
+
+    class Deck {
+        +int id
+        +string name
+        +int user_id
+        +list cards
+    }
+
+    class Match {
+        +int id
+        +int player1_id
+        +int player2_id
+        +int current_turn
+        +string status
+    }
+
+    WebServer --> DAOUsers : usa
+    WebServer --> DAOCards : usa
+    WebServer --> DAODecks : usa
+    WebServer --> DAOMatches : usa
+
+    DAOUsers --> User : gestiona
+    DAOCards --> Card : gestiona
+    DAODecks --> Deck : gestiona
+    DAODecks --> Card : contiene
+    DAOMatches --> Match : gestiona
