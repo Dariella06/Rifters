@@ -41,8 +41,9 @@ Usuario no encontrado:
   "description": "Usuari no trobat",
   "code": 1
 }
-Falta parámetro username:
 ```
+
+Falta parámetro username:
 
 ```json
 {
