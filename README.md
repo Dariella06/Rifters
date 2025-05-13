@@ -30,7 +30,7 @@ Enlace de ver los requerimientos:
 
 En este apartado se muestra el Modelo E/R de nuestro proyecto, donde se puede ver la estructura de la base de datos. El diagrama representa la relación entre las distintas entidades involucradas, así como sus atributos y las conexiones lógicas que existen entre ellas. 
 
-<img src="imagenes/image.png" alt="Modelo E/R" width="850" height="570"/>
+![Model E/R](imagenes/image.png)
 
 ## Diagramas de Arquitectura Cliente / Servidor
 
