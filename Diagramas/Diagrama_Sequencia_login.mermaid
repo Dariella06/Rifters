@@ -1,0 +1,17 @@
+sequenceDiagram
+    participant Cliente
+    participant Servidor
+    participant DAOUsers
+    participant BD as BaseDatos
+
+    Cliente->>Servidor: Enviar login (usuario, contraseña)
+    Servidor->>DAOUsers: Buscar usuario con esos datos
+    DAOUsers->>BaseDatos: SELECT * FROM usuarios WHERE username=? AND password=?
+    BaseDatos-->>DAOUsers: Devuelve el usuario o nada
+    DAOUsers-->>Servidor: Usuario encontrado o null
+
+    Servidor->>Servidor: Revisar si el usuario existe
+    Servidor->>Servidor: Si existe, crear token
+    Servidor-->>Cliente: Si existe, enviar OK (token, id, nombre)
+    Servidor-->>Cliente: Si no existe, enviar Error 401 (no autorizado)
+    Cliente->>Cliente: Si llegó token, guardarlo
