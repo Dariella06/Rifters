@@ -53,9 +53,9 @@ Este diagrama representa la estructura interna del servidor, incluyendo la API, 
 <img src="imagenes/server.jpg" alt="Diagrama del servidor" width="850" height="470"/>
 
 
-### Descripció dels End-points del WebService
+## Descripció dels End-points del WebService
 
-### Diagrama de classes del Backend
+## Diagrama de classes del Backend
 En este diagrama mostramos cómo organizamos nuestro servidor para el juego de cartas. Nosotros usamos un WebServer que tiene varios endpoints (como para registrarse, iniciar sesión, crear mazos, etc).
 
 Para que el servidor funcione bien, conectamos varias clases DAO que se encargan de manejar los datos de usuarios, cartas, mazos y partidas. Cada DAO está relacionado con una entidad (User, Card, Deck, Match), y así separamos la lógica del servidor de la lógica de acceso a datos.
@@ -65,11 +65,11 @@ Para que el servidor funcione bien, conectamos varias clases DAO que se encargan
 <img src="imagenes/Backend.png" alt="Diagrama del servidor" width="850" height="570"/>
 
 
-### Diagrama de Secuencia del Login
+## Diagrama de Secuencia del Login
 Este diagrama muestra cómo usamos la app: empezamos en un menú donde podemos registrarnos o iniciar sesión. Si entramos, llegamos al menú principal donde elegimos entre gestionar mazos o jugar partidas. También podemos cerrar sesión y volver al inicio.
 
 [Ver archivo de Mermaid del Diagrama de Secuencia de Login](Diagramas/Diagrama_Sequencia_login.mermaid)
 
 <img src="imagenes/Secuencia_Login.png" alt="Diagrama del Login" width="850" height="470"/>
 
-### Wireframes del Login i les següents pantalles
+## Wireframes del Login i les següents pantalles
