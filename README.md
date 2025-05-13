@@ -30,7 +30,7 @@ Enlace de ver los requerimientos:
 
 En este apartado se muestra el Modelo E/R de nuestro proyecto, donde se puede ver la estructura de la base de datos. El diagrama representa la relación entre las distintas entidades involucradas, así como sus atributos y las conexiones lógicas que existen entre ellas. 
 
-![Modelo E/R](imagenes/image.png)
+<img src="imagenes/image.png" alt="Modelo E/R" width="850" height="570"/>
 
 ## Diagramas de Arquitectura Cliente / Servidor
 
@@ -42,8 +42,7 @@ El siguiente diagrama muestra cómo se organiza la lógica del cliente, desde la
 
 [Ver archivo Mermaid del Cliente](Diagramas/Cliente.mermaid)
 
-![Diagrama Cliente](imagenes/cliente.jpg)
-
+<img src="imagenes/cliente.jpg" alt="Diagrama del cliente" width="850" height="570"/>
 
 ### Arquitectura del Servidor
 
@@ -51,7 +50,7 @@ Este diagrama representa la estructura interna del servidor, incluyendo la API, 
 
 [Ver archivo Mermaid del Servidor](Diagramas/Servidor.mermaid)
 
-![Diagrama Servidor](imagenes/server.jpg)
+<img src="imagenes/server.jpg" alt="Diagrama del servidor" width="850" height="570"/>
 
 
 ### Descripció dels End-points del WebService
