@@ -62,8 +62,6 @@ Para que el servidor funcione correctamente, definimos varias tablas DAO para al
 
 [Ver archivo del Diagrama del Backend](Diagramas/DiagramaBackend.mermaid)
 
-<img src="imagenes/Backend.png" alt="Diagrama del servidor" width="950" height="570"/>
-
 
 ## Diagrama de Secuencia del Login
 El siguiente ejemplo muestra cómo utilizamos para el juego: Comienza desde el menú donde podrás registrarte o iniciar sesión, una vez que inicies sesión, serás llevado al menú principal donde podrás elegir entre administrar los mazos o las partidas. También puedes volver al inicio al final de la sesión.
