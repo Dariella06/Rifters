@@ -5,7 +5,7 @@ classDiagram
         +generar_token() str
     }
 
-    class WebEndpoints {
+    class WebServer {
         +POST /register
         +POST /login
         +GET /cards
@@ -86,10 +86,10 @@ classDiagram
     }
 
     FlaskApp --> WebEndpoints : contiene
-    WebEndpoints --> DAOUsers : usa
-    WebEndpoints --> DAOCards : usa
-    WebEndpoints --> DAODecks : usa
-    WebEndpoints --> DAOMatches : usa
+    WebServer --> DAOUsers : usa
+    WebServer --> DAOCards : usa
+    WebServer --> DAODecks : usa
+    WebServer --> DAOMatches : usa
 
     DAOUsers --> User : gestiona
     DAOCards --> Card : gestiona
