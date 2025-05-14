@@ -1,45 +1,51 @@
 classDiagram
-    class WebServer {
+    class FlaskApp {
+        +SECRET_KEY : str
+        +token_required() Decorator
+        +generar_token() str
+    }
+
+    class WebEndpoints {
         +POST /register
         +POST /login
         +GET /cards
-        +GET, POST /decks
-        +DELETE /decks/<deck_id>
-        +POST /decks/<deck_id>/cards
-        +GET, POST /matches
-        +POST /matches/<match_id>/join
+        +GET,POST /decks
+        +DELETE /decks/<int:deck_id>
+        +POST /decks/<int:deck_id>/cards
+        +GET,POST /matches
+        +POST /matches/<int:match_id>/join
         +GET /matches/current
         +POST /matches/action
         +GET /debug/matches
     }
 
     class DAOUsers {
-        +addUser(username, password, email)
-        +getUserByID(user_id)
-        +getUserByUsernameAndPassword(username, password)
+        +addUser(username, password, email) int
+        +getUserByID(user_id) dict
+        +getUserByUsernameAndPassword(username, password) dict
     }
 
     class DAOCards {
-        +getAvailableCards()
+        +getAvailableCards() list[dict]
     }
 
     class DAODecks {
-        +getDecksByUser(user_id)
-        +addDeck(user_id, name)
-        +deleteDeck(deck_id, user_id)
-        +getDeckByID(deck_id)
-        +getCardsByDeck(deck_id)
-        +addCardToDeck(deck_id, card_id, quantity)
+        +getDecksByUser(user_id) list[dict]
+        +addDeck(user_id, name) int
+        +deleteDeck(deck_id, user_id) bool
+        +getDeckByID(deck_id) dict
+        +getCardsByDeck(deck_id) list[dict]
+        +addCardToDeck(deck_id, card_id, quantity) bool
     }
 
     class DAOMatches {
-        +getWaitingMatches()
-        +getPlayerMatches(user_id)
-        +createMatch(user_id, deck_id)
-        +joinMatch(match_id, user_id, deck_id)
-        +getMatchState(match_id, user_id)
-        +endTurn(match_id, user_id)
-        +playCard(match_id, user_id, card_id)
+        +getWaitingMatches() list[dict]
+        +getPlayerMatches(user_id) list[dict]
+        +createMatch(user_id, deck_id) int
+        +joinMatch(match_id, user_id, deck_id) bool
+        +getMatchState(match_id, user_id) dict
+        +endTurn(match_id, user_id) bool
+        +playCard(match_id, user_id, card_id) bool
     }
 
     class User {
@@ -54,47 +60,44 @@ classDiagram
         +string name
         +string type
         +string effect
+        +int quantity
     }
 
     class Deck {
         +int id
         +string name
         +int user_id
-        +list cards
     }
 
     class Match {
         +int id
         +int player1_id
-        +int player2_id
+        +int? player2_id
+        +int player1_deck_id
+        +int? player2_deck_id
         +int current_turn
         +string status
     }
 
-    WebServer --> DAOUsers : usa
-    WebServer --> DAOCards : usa
-    WebServer --> DAODecks : usa
-    WebServer --> DAOMatches : usa
+    class DeckCard {
+        +int deck_id
+        +int card_id
+        +int quantity
+    }
+
+    FlaskApp --> WebEndpoints : contiene
+    WebEndpoints --> DAOUsers : usa
+    WebEndpoints --> DAOCards : usa
+    WebEndpoints --> DAODecks : usa
+    WebEndpoints --> DAOMatches : usa
 
     DAOUsers --> User : gestiona
     DAOCards --> Card : gestiona
     DAODecks --> Deck : gestiona
-    DAODecks --> Card : contiene
+    DAODecks --> DeckCard : gestiona
     DAOMatches --> Match : gestiona
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    Deck "1" --> "*" DeckCard : contiene
+    DeckCard --> Card : referencia
+    Match --> Deck : referencia via player1_deck_id, player2_deck_id
+    Match --> User : referencia via player1_id, player2_id
