@@ -1,97 +1,74 @@
-classDiagram
+@startuml
 
-    class WebServer {
-        +POST /register
-        +POST /login
-        +GET /cards
-        +GET,POST /decks
-        +DELETE /decks/<int:deck_id>
-        +POST /decks/<int:deck_id>/cards
-        +GET,POST /matches
-        +POST /matches/<int:match_id>/join
-        +GET /matches/current
-        +POST /matches/action
-        +GET /debug/matches
-    }
+' Parte lógica del servidor
+class WebServer {
+    +register()
+    +login()
+    +getCards()
+    +getDecks()
+    +createDeck()
+    +deleteDeck()
+    +addCardToDeck()
+    +createMatch()
+    +joinMatch()
+    +playCard()
+}
 
-    class DAOUsers {
-        +addUser(username, password, email) int
-        +getUserByID(user_id) dict
-        +getUserByUsernameAndPassword(username, password) dict
-    }
+' Clases que acceden a la base de datos
+class DAOUsers
+class DAOCards
+class DAODecks
+class DAOMatches
 
-    class DAOCards {
-        +getAvailableCards() list[dict]
-    }
+' Entidades principales (datos reales)
+class User {
+    -id
+    -username
+    -password
+    -email
+}
 
-    class DAODecks {
-        +getDecksByUser(user_id) list[dict]
-        +addDeck(user_id, name) int
-        +deleteDeck(deck_id, user_id) bool
-        +getDeckByID(deck_id) dict
-        +getCardsByDeck(deck_id) list[dict]
-        +addCardToDeck(deck_id, card_id, quantity) bool
-    }
+class Card {
+    -id
+    -name
+    -type
+    -effect
+}
 
-    class DAOMatches {
-        +getWaitingMatches() list[dict]
-        +getPlayerMatches(user_id) list[dict]
-        +createMatch(user_id, deck_id) int
-        +joinMatch(match_id, user_id, deck_id) bool
-        +getMatchState(match_id, user_id) dict
-        +endTurn(match_id, user_id) bool
-        +playCard(match_id, user_id, card_id) bool
-    }
+class Deck {
+    -id
+    -name
+    -user_id
+}
 
-    class User {
-        +int id
-        +string username
-        +string password
-        +string email
-    }
+class Match {
+    -id
+    -player1_id
+    -player2_id
+    -status
+}
 
-    class Card {
-        +int id
-        +string name
-        +string type
-        +string effect
-        +int quantity
-    }
+class DeckCard {
+    -deck_id
+    -card_id
+    -quantity
+}
 
-    class Deck {
-        +int id
-        +string name
-        +int user_id
-    }
+' Relaciones (quién usa a quién)
+WebServer --> DAOUsers
+WebServer --> DAOCards
+WebServer --> DAODecks
+WebServer --> DAOMatches
 
-    class Match {
-        +int id
-        +int player1_id
-        +int? player2_id
-        +int player1_deck_id
-        +int? player2_deck_id
-        +int current_turn
-        +string status
-    }
+DAOUsers --> User
+DAOCards --> Card
+DAODecks --> Deck
+DAODecks --> DeckCard
+DAOMatches --> Match
 
-    class DeckCard {
-        +int deck_id
-        +int card_id
-        +int quantity
-    }
+Deck --> DeckCard : contiene
+DeckCard --> Card
+Match --> User : jugadores
+Match --> Deck : usa mazos
 
-    WebServer --> DAOUsers : usa
-    WebServer --> DAOCards : usa
-    WebServer --> DAODecks : usa
-    WebServer --> DAOMatches : usa
-
-    DAOUsers --> User : gestiona
-    DAOCards --> Card : gestiona
-    DAODecks --> Deck : gestiona
-    DAODecks --> DeckCard : gestiona
-    DAOMatches --> Match : gestiona
-
-    Deck "1" --> "*" DeckCard : contiene
-    DeckCard --> Card : referencia
-    Match --> Deck : referencia via player1_deck_id, player2_deck_id
-    Match --> User : referencia via player1_id, player2_id
+@enduml
