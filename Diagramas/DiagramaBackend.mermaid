@@ -1,9 +1,4 @@
 classDiagram
-    class FlaskApp {
-        +SECRET_KEY : str
-        +token_required() Decorator
-        +generar_token() str
-    }
 
     class WebServer {
         +POST /register
@@ -85,7 +80,6 @@ classDiagram
         +int quantity
     }
 
-    FlaskApp --> WebServer : contiene
     WebServer --> DAOUsers : usa
     WebServer --> DAOCards : usa
     WebServer --> DAODecks : usa
