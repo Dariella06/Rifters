@@ -1,14 +1,19 @@
 sequenceDiagram
-    participant WebAPI as Webservice
-    participant ServerLogic as Server Logic
-    participant DAO as Server DAO
+    participant Cliente
+    participant WebAPI as Webservice (Flask)
+    participant Middleware as JWT Middleware
+    participant ServerLogic as Lógica de Rutas
+    participant DAO as DAO (dao_users, dao_cards, etc.)
     participant DB as Base de Datos
 
-    Cliente->>WebAPI: Petición HTTP
+    Cliente->>WebAPI: Petición HTTP (ej. /login, /cards, /decks, /matches)
+    WebAPI->>Middleware: Verifica JWT (si aplica)
+    Middleware-->>WebAPI: Token válido o error
+
     WebAPI->>ServerLogic: Procesa la petición
-    ServerLogic->>DAO: Solicita datos
-    DAO->>DB: Consulta SQL
-    DB-->>DAO: Devuelve datos
-    DAO-->>ServerLogic: Objeto de datos
-    ServerLogic-->>WebAPI: Respuesta lista
-    WebAPI-->>Cliente: Respuesta HTTP
+    ServerLogic->>DAO: Llama a la función correspondiente del DAO
+    DAO->>DB: Realiza consulta SQL
+    DB-->>DAO: Retorna datos
+    DAO-->>ServerLogic: Devuelve objeto de datos
+    ServerLogic-->>WebAPI: Genera respuesta JSON
+    WebAPI-->>Cliente: Devuelve respuesta HTTP
