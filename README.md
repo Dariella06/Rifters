@@ -53,7 +53,68 @@ El siguiente diagrama muestra la estructura interna del servidor, incluida la AP
 <img src="imagenes/server.png" alt="Diagrama del servidor" width="850" height="370"/>
 
 
-## Descripció dels End-points del WebService
+## **Descripción dels End-points del WebService
+En nuestro proyecto, los endpoints nos permiten registrarnos y acceder al juego mediante /register y /login, obteniendo un token para utilizar el resto de funcionalidades. Consultamos las cartas disponibles con /cards y gestionamos nuestros mazos con /decks: podemos verlos, crearlos, editar su contenido o eliminarlos. Para jugar, usamos /matches para ver, crear o unirnos a partidas. Durante una partida, utilizamos /matches/current para ver el estado, /matches/action para jugar cartas o pasar turno, y /matches/<id>/surrender si decidimos rendirnos.
+
+## Host
+`http://127.0.0.1:5000`
+
+| Descripción              | End-point                  | Método  | Tipo de petición     | Parámetros                                                                                   |
+|-------------------------|----------------------------|---------|---------------------|---------------------------------------------------------------------------------------------|
+| Registrar usuario       | `/register`                | POST    | `application/json`  | `username` (string), `password` (string), `email` (string)                                 |
+| Iniciar sesión          | `/login`                   | POST    | `application/json`  | `username` (string), `password` (string)                                                   |
+| Consultar cartas        | `/cards`                   | GET     | Token en header     | Token JWT en header `Authorization: Bearer <token>`                                        |
+| Consultar mazos         | `/decks`                   | GET     | Token en header     | Token JWT                                                                                   |
+| Crear mazo              | `/decks`                   | POST    | `application/json`  | `name` (string), Token JWT                                                                  |
+| Eliminar mazo           | `/decks/<deck_id>`         | DELETE  | Token en header     | Token JWT                                                                                   |
+| Añadir carta a mazo     | `/decks/<deck_id>/cards`   | POST    | `application/json`  | `card_id` (int), `quantity` (int, opcional), Token JWT                                     |
+| Ver partidas            | `/matches`                 | GET     | Token en header     | Token JWT                                                                                   |
+| Crear partida           | `/matches`                 | POST    | `application/json`  | `deck_id` (int), Token JWT                                                                 |
+| Unirse a partida        | `/matches/<match_id>/join` | POST    | `application/json`  | `deck_id` (int), Token JWT                                                                 |
+| Estado partida actual   | `/matches/current`         | GET     | Token en header     | Token JWT                                                                                   |
+| Realizar acción en partida | `/matches/action`        | POST    | `application/json`  | `action` (string: "play_card" o "end_turn"), `card_id` (int, si action es "play_card"), Token JWT |
+| Rendirse en partida     | `/matches/<match_id>/surrender` | POST | Token en header  | Token JWT                                                                                   |
+
+
+## Ejemplos de respuestas
+
+### `/register`
+
+**201 Created**
+```json
+{
+  "message": "Usuario registrado exitosamente",
+  "user_id": 1
+}
+```
+
+**400 Bad Request**
+
+```json
+{
+  "error": "Todos los campos son requeridos"
+}
+```
+
+### `/login`
+**200 OK**
+
+```json
+{
+  "token": "<jwt_token>",
+  "user_id": 1,
+  "username": "usuario",
+  "message": "Sesión iniciada exitosamente"
+}
+```
+
+**401 Unauthorized**
+
+```json
+{
+  "error": "Credenciales incorrectas"
+}
+```
 
 ## Diagrama de classes del Backend
 La imagen a continuación muestra cómo configuramos el servidor del juego de cartas. Utilizamos un servidor web que realiza diversas funciones (como registro, registro, recolección, etc.).
