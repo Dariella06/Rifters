@@ -12,7 +12,7 @@ class WebServer {
   +POST /matches/:match_id/join
   +GET /matches/current
   +POST /matches/action
-  +GET /debug/matches
+  +POST /matches/:match_id/surrender
 }
 
 %% --- DAO: Acceso a datos ---
@@ -43,6 +43,7 @@ class DAOMatches {
   +getMatchState(match_id, user_id)
   +endTurn(match_id, user_id)
   +playCard(match_id, user_id, card_id)
+  +endMatch(match_id, user_id)
 }
 
 %% --- Entidades (datos) ---
