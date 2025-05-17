@@ -1,14 +1,12 @@
 sequenceDiagram
-    participant UI as Vista UI
-    participant ClientAPI as Client API
-    participant ClientLogic as Client Logic
-    participant Server as Servidor
+    participant Usuario
+    participant UI as CLI Usuario (Vista UI)
+    participant ClientAPI as Cliente HTTP
+    participant Server as Servidor Flask
 
-    UI->>ClientAPI: Usuario solicita acción
-    ClientAPI->>ClientLogic: Validar/Procesar petición
-    ClientLogic->>ClientAPI: Resultado procesamiento
-    ClientAPI->>Server: Petición HTTP (si aplica)
-    Server-->>ClientAPI: Respuesta JSON
-    ClientAPI->>ClientLogic: Procesar respuesta
-    ClientLogic->>ClientAPI: Datos formateados
-    ClientAPI-->>UI: Mostrar resultado al usuario
+    Usuario->>UI: Interacción vía consola
+    UI->>ClientAPI: Solicita datos / acciones
+    ClientAPI->>Server: HTTP Request (GET/POST/DELETE)
+    Server-->>ClientAPI: JSON Response
+    ClientAPI->>UI: Devuelve datos procesados
+    UI->>Usuario: Muestra resultados
