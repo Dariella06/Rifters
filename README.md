@@ -143,3 +143,6 @@ En la sección de gestión de mazos, el usuario puede crear nuevos mazos, editar
 Durante una partida, se recorren las distintas fases del juego: robar, jugar, atacar y finalizar turno. Al concluir la partida, se muestran los resultados y se ofrece la opción de solicitar una revancha o regresar al menú principal.
 
 [Ver archivo de Wireframes de Login](Diagramas/Wireframes_Login.mermaid)
+
+### Ejemplo del Login o Crear un nuevo usuario
+
