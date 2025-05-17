@@ -50,7 +50,7 @@ El siguiente diagrama muestra la estructura interna del servidor, incluida la AP
 
 [Ver archivo Mermaid del Servidor](Diagramas/Servidor.mermaid)
 
-<img src="imagenes/server.png" alt="Diagrama del servidor" width="650" height="470"/>
+<img src="imagenes/server.png" alt="Diagrama del servidor" width="850" height="370"/>
 
 
 ## Descripció dels End-points del WebService
