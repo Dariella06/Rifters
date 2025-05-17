@@ -1,0 +1,22 @@
+flowchart TD
+    A[Pantalla de Inicio] -->|"Opción 1"| B[Login]
+    A -->|"Opción 2"| C[Registro]
+    A -->|"Opción 3"| D[Salir]
+    B --> E[Menú Principal]
+    C --> E
+    E -->|"Opción 1"| F[Gestión de Mazos]
+    E -->|"Opción 2"| G[Menú Partidas]
+    E -->|"Opción 3"| H[Cerrar Sesión]
+    F --> I[Ver Mazos]
+    F --> J[Crear Mazo]
+    F --> K[Añadir Carta]
+    F --> L[Volver]
+    G --> M[Crear Partida]
+    G --> N[Unirse a Partida]
+    G --> O[Estado Partida]
+    G --> P[Volver]
+    M --> Q[Menú de Juego]
+    N --> Q
+    Q --> R[Pasar Turno]
+    Q --> S[Jugar Carta]
+    Q --> T[Abandonar Partida]
