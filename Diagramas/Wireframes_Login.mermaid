@@ -1,22 +1,47 @@
 flowchart TD
-    A[Pantalla de Inicio] -->|"Opción 1"| B[Login]
-    A -->|"Opción 2"| C[Registro]
-    A -->|"Opción 3"| D[Salir]
-    B --> E[Menú Principal]
-    C --> E
-    E -->|"Opción 1"| F[Gestión de Mazos]
-    E -->|"Opción 2"| G[Menú Partidas]
-    E -->|"Opción 3"| H[Cerrar Sesión]
-    F --> I[Ver Mazos]
-    F --> J[Crear Mazo]
-    F --> K[Añadir Carta]
-    F --> L[Volver]
-    G --> M[Crear Partida]
-    G --> N[Unirse a Partida]
-    G --> O[Estado Partida]
-    G --> P[Volver]
-    M --> Q[Menú de Juego]
-    N --> Q
-    Q --> R[Pasar Turno]
-    Q --> S[Jugar Carta]
-    Q --> T[Abandonar Partida]
+    %% Pantallas principales
+    A[Pantalla de Inicio] -->|Opción 1| B[Login]
+    A -->|Opción 2| C[Registro]
+    A -->|Opción 3| D[Salir]
+    
+    B -->|Credenciales válidas| E[Menú Principal]
+    C -->|Registro exitoso| E
+    
+    E -->|Opción 1| F[Gestión de Mazos]
+    E -->|Opción 2| G[Menú Partidas]
+    E -->|Opción 3| H[Cerrar Sesión] --> A
+    
+    %% Gestión de Mazos
+    F -->|Ver Mazos| I[Listado de Mazos]
+    F -->|Crear Mazo| J[Formulario Nuevo Mazo]
+    F -->|Añadir Carta| K[Selector Cartas]
+    F -->|Eliminar| L[Confirmación Eliminación]
+    I & J & K & L --> F
+    
+    %% Flujo de Partidas
+    G -->|Crear Partida| M[Selección Mazo] --> N[Esperando Jugador]
+    G -->|Unirse a Partida| O[Listado Partidas] --> P[Selección Mazo] --> Q[Partida Iniciada]
+    
+    %% Flujo de Juego
+    Q --> R[Fase de Robar]
+    R --> S[Fase de Jugar]
+    S --> T[Fase de Ataque]
+    T --> U[Fase Final]
+    U -->|Turno contrario| R
+    U -->|Fin Partida| V[Pantalla Resultado] --> E
+    
+    %% Acciones durante el juego
+    S -->|Jugar Carta| W[Validar Maná/Reglas]
+    T -->|Atacar| X[Selector Objetivo]
+    Q -->|Abandonar| Y[Confirmación] --> V
+    
+    %% Estados alternativos
+    N -->|Timeout| Z[Partida Cancelada] --> G
+    Q -->|Rendirse| Y
+    W -->|Éxito| S
+    W -->|Fallo| S
+    X -->|Daño calculado| T
+    
+    %% Conexiones especiales
+    V -->|Revancha| M
+    Z --> M
