@@ -2,9 +2,13 @@ sequenceDiagram
     participant UI as Vista UI
     participant ClientAPI as Client API
     participant ClientLogic as Client Logic
+    participant Server as Servidor
 
-    UI->>ClientAPI: Usuario solicita información
-    ClientAPI->>ClientLogic: Consulta lógica local (si aplica)
-    ClientLogic-->>ClientAPI: Resultado o paso a siguiente
-    ClientAPI-->>UI: Muestra resultados al usuario (si es local)
-    ClientAPI->>Servidor: Petición HTTP (si no es local)
+    UI->>ClientAPI: Usuario solicita acción
+    ClientAPI->>ClientLogic: Validar/Procesar petición
+    ClientLogic->>ClientAPI: Resultado procesamiento
+    ClientAPI->>Server: Petición HTTP (si aplica)
+    Server-->>ClientAPI: Respuesta JSON
+    ClientAPI->>ClientLogic: Procesar respuesta
+    ClientLogic->>ClientAPI: Datos formateados
+    ClientAPI-->>UI: Mostrar resultado al usuario
