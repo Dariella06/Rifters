@@ -133,4 +133,10 @@ El siguiente ejemplo muestra cómo utilizamos para el juego: Comienza desde el m
 
 ## Wireframes del Login i les següents pantalles
 
+Nosotros, en el wireframe del Login, comenzamos en una pantalla con opciones para iniciar sesión, registrarnos o salir. Al ingresar, accedemos al menú principal, donde gestionamos mazos, jugamos partidas o cerramos sesión.
+
+En la gestión de mazos creamos, editamos o eliminamos mazos y cartas. En partidas, creamos o nos unimos a una, eligiendo un mazo.
+
+Durante la partida pasamos por las fases de robar, jugar, atacar y finalizar. Al terminar, vemos los resultados y podemos pedir revancha o volver al menú.
+
 [Ver archivo de Wireframes de Login](Diagramas/Wireframes_Login.mermaid)
