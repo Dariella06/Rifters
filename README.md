@@ -132,3 +132,5 @@ El siguiente ejemplo muestra cómo utilizamos para el juego: Comienza desde el m
 <img src="imagenes/Secuencia_Login.png" alt="Diagrama del Login" width="850" height="470"/>
 
 ## Wireframes del Login i les següents pantalles
+
+[Ver archivo de Wireframes de Login](Diagramas/Wireframes_Login.mermaid)
