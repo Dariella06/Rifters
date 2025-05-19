@@ -146,4 +146,4 @@ Durante una partida, se recorren las distintas fases del juego: robar, jugar, at
 
 ### Ejemplo del Login o Crear un nuevo usuario
 
-<img src="imagenes/Ejemplo_Registro_Login.png" alt="Ejemplo de Login y Crear usuario" width="850" height="430"/>
+<img src="imagenes/Ejemplo_Registro_Login.png" alt="Ejemplo de Login y Crear usuario" width="850" height="1030"/>
