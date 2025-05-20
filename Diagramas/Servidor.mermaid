@@ -1,12 +1,10 @@
 sequenceDiagram
-    participant Cliente
     participant WebAPI as Webservice (Flask)
     participant Middleware as JWT Middleware
     participant ServerLogic as Lógica de Rutas
     participant DAO as DAO (dao_users, dao_cards, etc.)
     participant DB as Base de Datos
 
-    Cliente->>WebAPI: Petición HTTP (ej. /login, /cards, /decks, /matches)
     WebAPI->>Middleware: Verifica JWT (si aplica)
     Middleware-->>WebAPI: Token válido o error
 
