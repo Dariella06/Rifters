@@ -140,40 +140,40 @@ El segundo jugaodr se registrara para luego iniciar su sessión y entrar a la pa
 - Player 2 tiene que haber al menos un mazo creado con cartas
 - La partida tiene que estar disponible (no llena)
 
-#### Post Condiciones
+### Post Condiciones
 - Player 2 se unira a la partida con el mazo seleccionado
 - La partida cambia su estado a "active"
 - Se iniciaria el juego con Player 1 como jugador inicial
 
 ### Secuancias Normales
-##### Acción
-| # | Acción (actor)                                                                            | Reacción (sistema)                                                                      |
-| - | ----------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
-| 1 | El cliente selecciona la opción de registrarse y proporciona nombre, correo y contraseña. | El cliente envía estos datos al servidor como mensaje tipo “registro”.                  |
-| 2 | —                                                                                         | El servidor recibe la solicitud, la procesa y verifica si el correo ya está registrado. |
-| 3 | —                                                                                         | Si no existe, registra al usuario en la base de datos.                                  |
-| 4 | —                                                                                         | El servidor responde al cliente indicando éxito o error del proceso.                    |
-| 5 | El cliente recibe la confirmación.                                                        | Se informa si fue exitoso o si hubo un problema.                                        |
+| Nº | Lo que hago yo (como cliente)                                                       | Lo que hace el sistema (servidor)                                                       |
+| -- | ----------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
+| 1  | Selecciono la opción para registrarme e ingreso mi nombre, correo y una contraseña. | Toma esos datos y los envía al servidor como un mensaje de tipo “registro”.             |
+| 2  | —                                                                                   | Recibe la solicitud, la procesa y revisa si el correo ya está registrado.               |
+| 3  | —                                                                                   | Si el correo no existe en la base de datos, registra mi información como nuevo usuario. |
+| 4  | —                                                                                   | Me responde indicando si el proceso fue exitoso o si ocurrió algún error.               |
+| 5  | Recibo la respuesta del sistema.                                                    | Me muestra si el registro fue exitoso o si hubo algún problema con el proceso.          |
 
-##### Exepciones
-| # | Acción (actor)                                                   | Reacción (sistema)                                                                      |
-| - | ---------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
-| p | En el caso de que la conexión entre cliente y servidor se pierda | El sistema deberá `{mostrar mensaje de error, abortar el proceso}`.                     |
-| q | En el caso de que ocurra una excepción de base de datos          | El sistema deberá `{manejar el error, registrar el fallo y enviar mensaje al cliente}`. |
+### Exepciones
+| Nº | Si pasa esto (como cliente)                                        | Entonces el sistema (servidor) debería...                                              |
+| -- | ------------------------------------------------------------------ | -------------------------------------------------------------------------------------- |
+| p  | Si se pierde la conexión mientras intento registrarme              | Mostrarme un mensaje de error claro y cancelar el proceso para evitar inconsistencias. |
+| q  | Si ocurre algún problema interno con la base de datos del servidor | Manejar el error internamente, registrar el fallo y avisarme con un mensaje apropiado. |
 
-#### Rendimiento
+
+### Rendimiento
 En el sistema deberiamos realizar las acciones descritas en los pasos del 1 al 5 en un máximo de 5 segundos.
 
-#### Frequencia
+### Frequencia
 En este caso se puede esperar a que se lleve a cabo probar unas 20 veces para comprobar el funcionamiento de cada opción. Comprobar desde crear un usario hasta poder entrar y jugar una partida.
 
-#### Importancia
+### Importancia
 Vital
 
-#### Urgencia
+### Urgencia
 Immediatamente
 
-#### Comentarios
+### Comentarios
 - En este caso, es fundamental el uso de acceso inicial de nuevos usuarios al sistema
 - Requererimos validacoines minimas y también importantes del lado del servidor
 
