@@ -1,12 +1,10 @@
 sequenceDiagram
-    participant Usuario
-    participant UI as CLI Usuario (Vista UI)
-    participant ClientAPI as Cliente HTTP
-    participant Server as Servidor Flask
+    participant ClientView as Client View
+    participant ClientDAO as Client DAO User
+    participant Server as Server
 
-    Usuario->>UI: Interacción vía consola
-    UI->>ClientAPI: Solicita datos / acciones
-    ClientAPI->>Server: HTTP Request (GET/POST/DELETE)
-    Server-->>ClientAPI: JSON Response
-    ClientAPI->>UI: Devuelve datos procesados
-    UI->>Usuario: Muestra resultados
+    ClientView->>ClientView: Input username (buscar_usuario_por_username)
+    ClientView->>ClientDAO: Envía username (requests.get)
+    ClientDAO->>Server: GET /users/{username} (getUserByUsername)
+    Server-->>ClientDAO: JSON response (200/404)
+    ClientDAO->>ClientView: Procesa datos (status_code, json())
