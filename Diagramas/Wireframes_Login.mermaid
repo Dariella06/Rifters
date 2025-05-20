@@ -1,47 +1,29 @@
 flowchart TD
-    %% Pantallas principales
-    A[Pantalla de Inicio] -->|Opción 1| B[Login]
-    A -->|Opción 2| C[Registro]
-    A -->|Opción 3| D[Salir]
-    
-    B -->|Credenciales válidas| E[Menú Principal]
-    C -->|Registro exitoso| E
-    
-    E -->|Opción 1| F[Gestión de Mazos]
-    E -->|Opción 2| G[Menú Partidas]
-    E -->|Opción 3| H[Cerrar Sesión] --> A
-    
-    %% Gestión de Mazos
-    F -->|Ver Mazos| I[Listado de Mazos]
-    F -->|Crear Mazo| J[Formulario Nuevo Mazo]
-    F -->|Añadir Carta| K[Selector Cartas]
-    F -->|Eliminar| L[Confirmación Eliminación]
-    I & J & K & L --> F
-    
-    %% Flujo de Partidas
-    G -->|Crear Partida| M[Selección Mazo] --> N[Esperando Jugador]
-    G -->|Unirse a Partida| O[Listado Partidas] --> P[Selección Mazo] --> Q[Partida Iniciada]
-    
-    %% Flujo de Juego
-    Q --> R[Fase de Robar]
-    R --> S[Fase de Jugar]
-    S --> T[Fase de Ataque]
-    T --> U[Fase Final]
-    U -->|Turno contrario| R
-    U -->|Fin Partida| V[Pantalla Resultado] --> E
-    
-    %% Acciones durante el juego
-    S -->|Jugar Carta| W[Validar Maná/Reglas]
-    T -->|Atacar| X[Selector Objetivo]
-    Q -->|Abandonar| Y[Confirmación] --> V
-    
-    %% Estados alternativos
-    N -->|Timeout| Z[Partida Cancelada] --> G
-    Q -->|Rendirse| Y
-    W -->|Éxito| S
-    W -->|Fallo| S
-    X -->|Daño calculado| T
-    
-    %% Conexiones especiales
-    V -->|Revancha| M
-    Z --> M
+    INICIO[Menú de Inicio]
+    MAZOS[Menú de Mazos]
+    PARTIDAS[Menú Principal de Partidas]
+    JUEGO[Menú de Juego]
+
+    INICIO --> A1[Iniciar sesión]
+    INICIO --> A2[Registrarse]
+    INICIO --> A3[Salir]
+
+    MAZOS --> M1[Ver mis mazos]
+    MAZOS --> M2[Crear nuevo mazo]
+    MAZOS --> M3[Añadir carta a mazo]
+    MAZOS --> M4[Ver cartas disponibles]
+    MAZOS --> M5[Eliminar un mazo]
+    MAZOS --> M6[Volver al menú principal]
+
+    PARTIDAS --> P1[Crear nueva partida]
+    PARTIDAS --> P2[Ver partidas disponibles]
+    PARTIDAS --> P3[Unirse a partida]
+    PARTIDAS --> P4[Volver al menú principal]
+
+    JUEGO --> J1[Ver estado de la partida]
+    JUEGO --> J2[Realizar acción (si es tu turno)]
+    JUEGO --> J3[Rendirse/Abandonar partida]
+    JUEGO --> J4[Volver al menú principal]
+
+    J2 --> A21[Pasar turno]
+    J2 --> A22[Jugar carta]
