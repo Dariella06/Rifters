@@ -1,29 +1,58 @@
 flowchart TD
-    INICIO[Menú de Inicio]
-    MAZOS[Menú de Mazos]
-    PARTIDAS[Menú Principal de Partidas]
-    JUEGO[Menú de Juego]
+    %% Menú de Inicio
+    START[Menú de Inicio]
+    START --> LOGIN[Iniciar sesión]
+    START --> REGISTER[Registrarse]
+    START --> EXIT[Salir]
 
-    INICIO --> A1[Iniciar sesión]
-    INICIO --> A2[Registrarse]
-    INICIO --> A3[Salir]
+    %% Registro
+    REGISTER --> REG_DONE[Usuario registrado]
 
+    %% Inicio de sesión exitoso
+    LOGIN --> AUTH_CHECK{¿Autenticado?}
+    AUTH_CHECK -- Sí --> MAIN_MENU[Menú Principal]
+
+    %% Menú principal después del login
+    MAIN_MENU --> MAZOS[Menú de Mazos]
+    MAIN_MENU --> PARTIDAS[Menú Principal de Partidas]
+    MAIN_MENU --> LOGOUT[Salir]
+
+    %% Menú de Mazos
     MAZOS --> M1[Ver mis mazos]
     MAZOS --> M2[Crear nuevo mazo]
     MAZOS --> M3[Añadir carta a mazo]
     MAZOS --> M4[Ver cartas disponibles]
     MAZOS --> M5[Eliminar un mazo]
     MAZOS --> M6[Volver al menú principal]
+    M6 --> MAIN_MENU
 
+    %% Menú Principal de Partidas
     PARTIDAS --> P1[Crear nueva partida]
     PARTIDAS --> P2[Ver partidas disponibles]
     PARTIDAS --> P3[Unirse a partida]
     PARTIDAS --> P4[Volver al menú principal]
+    P4 --> MAIN_MENU
 
-    JUEGO --> J1[Ver estado de la partida]
-    JUEGO --> J2[Realizar acción (si es tu turno)]
-    JUEGO --> J3[Rendirse/Abandonar partida]
-    JUEGO --> J4[Volver al menú principal]
+    %% Crear nueva partida
+    P1 --> DECK_CHECK1{¿Tienes mazos?}
+    DECK_CHECK1 -- No --> NEED_DECK1[Debes crear un mazo]
+    DECK_CHECK1 -- Sí --> MATCH_CREATED[Partida creada]
+    MATCH_CREATED --> GAME[Menú de Juego]
 
-    J2 --> A21[Pasar turno]
-    J2 --> A22[Jugar carta]
+    %% Unirse a partida
+    P3 --> DECK_CHECK2{¿Tienes mazos?}
+    DECK_CHECK2 -- No --> NEED_DECK2[Debes crear un mazo]
+    DECK_CHECK2 -- Sí --> JOINED_MATCH[Unido a partida]
+    JOINED_MATCH --> GAME
+
+    %% Menú de Juego
+    GAME --> G1[Ver estado de la partida]
+    GAME --> G2[Realizar acción (si es tu turno)]
+    GAME --> G3[Rendirse/Abandonar partida]
+    GAME --> G4[Volver al menú principal]
+    G4 --> MAIN_MENU
+
+    %% Acciones del jugador
+    G2 --> ACTION_CHOICE{Elegir acción}
+    ACTION_CHOICE --> ACT1[Pasar turno]
+    ACTION_CHOICE --> ACT2[Jugar carta]
