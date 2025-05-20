@@ -145,7 +145,7 @@ El segundo jugaodr se registrara para luego iniciar su sessión y entrar a la pa
 - La partida cambia su estado a "active"
 - Se iniciaria el juego con Player 1 como jugador inicial
 
-#### Secuancias Normales
+### Secuancias Normales
 ##### Acción
 | # | Acción (actor)                                                                            | Reacción (sistema)                                                                      |
 | - | ----------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
