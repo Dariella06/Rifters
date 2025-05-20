@@ -1,9 +1,9 @@
 sequenceDiagram
     participant Client as Cliente
-    participant WebService as Servidor - Webservice
-    participant DAO as Server DAO User
+    participant WebService as Servidor - WebService
+    participant DAO as Servidor - DAO de Usuario
 
-    Client->>WebService: Petición HTTP GET /users/&lt;username&gt;
+    Client->>WebService: Petición HTTP GET /users/<username>
     WebService->>DAO: getUserByUsername(username)
     DAO-->>WebService: Usuario (si existe)
-    WebService-->>Client: JSON con datos de usuario
+    WebService-->>Client: JSON con datos del usuario
