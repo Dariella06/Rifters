@@ -188,11 +188,11 @@ El siguiente diagrama ilustra el flujo de autenticación en el juego. El proceso
 
 ## Wireframes del Login y Pantallas Posteriores
 
-En los wireframes diseñados para el sistema, el flujo comienza en una pantalla inicial que ofrece las opciones de iniciar sesión, registrarse o salir. Al ingresar correctamente, el usuario accede al menú principal, desde donde puede gestionar sus mazos, unirse o crear partidas, o cerrar sesión.
+El wireframes que diseñamos para el sistema, comienza en una pantalla inicial que ofrece las opciones de iniciar sesión, registrarse o salir. Al ingresar correctamente, el usuario accede al menú principal, desde donde puede gestionar sus mazos, unirse o crear partidas, o cerrar sesión.
 
-En la sección de gestión de mazos, el usuario puede crear nuevos mazos, editar su contenido o eliminarlos. En la sección de partidas, puede crear una nueva partida o unirse a una existente eligiendo el mazo con el que desea jugar.
+En la sección de **Gestión de mazos**, el usuario puede crear nuevos mazos, editar su contenido o eliminarlos. En la sección de **Jugar partida**, puede crear una nueva partida o unirse a una existente eligiendo el mazo con el que desea jugar.
 
-Durante una partida, se recorren las distintas fases del juego: robar, jugar, atacar y finalizar turno. Al concluir la partida, se muestran los resultados y se ofrece la opción de solicitar una revancha o regresar al menú principal.
+Cuando los jugadores esten dentro de la partida, se recorren las distintas fases del juego: **Ver estado de la partida**, **Realizar acción (si es tu turno)** y **Rendirse/Abandonar partida**. 
 
 [Ver archivo de Wireframes de Login](Diagramas/Wireframes_Login.mermaid)
 
