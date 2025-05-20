@@ -124,6 +124,58 @@ Para el correcto funcionamiento del sistema, se han definido varias clases DAO (
 
 [Ver archivo del Diagrama del Backend](Diagramas/DiagramaBackend.mermaid)
 
+## Un caso detallado a escoger
+### Descripción
+El primer jugador entrara a iniciarse y crear una partida
+El segundo jugaodr se registrara para luego iniciar su sessión y entrar a la partida del primer jugador
+
+### Actores
+- Player 1 (Creador de la partida)
+- Player 2 (Jugador que se une)
+- Sistema de juego
+
+### Pre Condiciones
+- Player 1 tiene que haber creado una partida y esta debe estar en estado "waiting"
+- Player 2 tiene que haber entrado a una sesión iniciada
+- Player 2 tiene que haber al menos un mazo creado con cartas
+- La partida tiene que estar disponible (no llena)
+
+#### Post Condiciones
+- Player 2 se unira a la partida con el mazo seleccionado
+- La partida cambia su estado a "active"
+- Se iniciaria el juego con Player 1 como jugador inicial
+
+#### Secuancias Normales
+##### Acción
+| # | Acción (actor)                                                                            | Reacción (sistema)                                                                      |
+| - | ----------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
+| 1 | El cliente selecciona la opción de registrarse y proporciona nombre, correo y contraseña. | El cliente envía estos datos al servidor como mensaje tipo “registro”.                  |
+| 2 | —                                                                                         | El servidor recibe la solicitud, la procesa y verifica si el correo ya está registrado. |
+| 3 | —                                                                                         | Si no existe, registra al usuario en la base de datos.                                  |
+| 4 | —                                                                                         | El servidor responde al cliente indicando éxito o error del proceso.                    |
+| 5 | El cliente recibe la confirmación.                                                        | Se informa si fue exitoso o si hubo un problema.                                        |
+
+##### Exepciones
+| # | Acción (actor)                                                   | Reacción (sistema)                                                                      |
+| - | ---------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
+| p | En el caso de que la conexión entre cliente y servidor se pierda | El sistema deberá `{mostrar mensaje de error, abortar el proceso}`.                     |
+| q | En el caso de que ocurra una excepción de base de datos          | El sistema deberá `{manejar el error, registrar el fallo y enviar mensaje al cliente}`. |
+
+#### Rendimiento
+En el sistema deberiamos realizar las acciones descritas en los pasos del 1 al 5 en un máximo de 5 segundos.
+
+#### Frequencia
+En este caso se puede esperar a que se lleve a cabo probar unas 20 veces para comprobar el funcionamiento de cada opción. Comprobar desde crear un usario hasta poder entrar y jugar una partida.
+
+#### Importancia
+Vital
+
+#### Urgencia
+Immediatamente
+
+#### Comentarios
+- En este caso, es fundamental el uso de acceso inicial de nuevos usuarios al sistema
+- Requererimos validacoines minimas y también importantes del lado del servidor
 
 ## Diagrama de Secuencia del Login
 
