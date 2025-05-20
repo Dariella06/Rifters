@@ -1,4 +1,3 @@
-## Autenticación
 
 ### `POST /register`
 Registra un nuevo usuario
