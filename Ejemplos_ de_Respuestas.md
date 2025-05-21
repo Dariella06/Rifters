@@ -9,215 +9,253 @@ Registra un nuevo usuario
   "password": "string",
   "email": "string"
 }
+```
 Respuestas:
 
 201 Created:
 
-json
+```json
 {"message": "Usuario registrado exitosamente", "user_id": 1}
 400 Bad Request:
-
-json
+```
+```json
 {"error": "Todos los campos son requeridos"}
 500 Internal Server Error:
-
-json
+```
+```json
 {"error": "Error en el registro: [detalle]"}
 POST /login
 Inicia sesión y obtén token JWT
-
+```
 Request Body:
 
-json
+```json
 {
   "username": "string",
   "password": "string"
 }
+```
 Respuestas:
 
 200 OK:
 
-json
+```json
 {
   "token": "jwt.token.here",
   "user_id": 1,
   "username": "usuario",
   "message": "Sesión iniciada exitosamente"
 }
+```
 400 Bad Request:
 
-json
+```json
 {"error": "Usuario y contraseña requeridos"}
 401 Unauthorized:
-
-json
+```
+```json
 {"error": "Credenciales incorrectas"}
+```
 Cartas
-GET /cards 🔒
+GET /cards 
 Obtiene todas las cartas disponibles
 
 Respuestas:
 
 200 OK:
 
-json
+```json
 [{"id": 1, "name": "Carta 1"}, ...]
+```
 404 Not Found:
 
-json
+```json
 {"message": "No hay cartas disponibles"}
+```
 Mazos
-GET /decks 🔒
+GET /decks 
 Obtiene todos los mazos del usuario
 
 Respuestas:
 
 200 OK:
 
-json
+```json
 [{"id": 1, "name": "Mazo 1", "cards": []}, ...]
+```
+
 404 Not Found:
 
-json
+```json
 {"message": "No tienes mazos creados"}
-POST /decks 🔒
+```
+
+POST /decks
 Crea un nuevo mazo
 
 Request Body:
 
-json
+```json
 {"name": "Nombre del mazo"}
+```
+
 Respuestas:
 
 201 Created:
 
-json
+```json
 {"message": "Mazo creado exitosamente", "deck_id": 1}
+```
 400 Bad Request:
 
-json
+```json
 {"error": "Nombre del mazo requerido"}
-DELETE /decks/<int:deck_id> 🔒
+```
+
+DELETE /decks/<int:deck_id> 
 Elimina un mazo
 
 Respuestas:
 
 200 OK:
 
-json
+```json
 {"message": "Mazo eliminado exitosamente"}
+```
 400 Bad Request:
 
-json
+```json
 {"error": "Error al eliminar mazo"}
-POST /decks/<int:deck_id>/cards 🔒
+
+POST /decks/<int:deck_id>/cards 
 Añade carta a un mazo
 
 Request Body:
 
-json
+```json
 {"card_id": 1, "quantity": 1}
+```
 Respuestas:
 
 200 OK:
 
-json
+```json
 {"message": "Carta añadida al mazo exitosamente"}
+```
+
 400 Bad Request:
 
-json
+```json
 {"error": "ID de carta requerido"}
+```
+
 Partidas
-GET /matches 🔒
+GET /matches 
 Obtiene partidas disponibles y propias
 
 Respuestas:
 
 200 OK:
 
-json
+```json
 {
   "waiting_matches": [],
   "player_matches": []
 }
-POST /matches 🔒
+```
+POST /matches 
 Crea una nueva partida
 
 Request Body:
 
-json
+```json
 {"deck_id": 1}
+```
 Respuestas:
 
 201 Created:
 
-json
+```json
 {"message": "Partida creada exitosamente", "match_id": 1}
+```
 400 Bad Request:
 
-json
+```json
 {"error": "ID de mazo requerido"}
-POST /matches/<int:match_id>/join 🔒
+```
+POST /matches/<int:match_id>/join 
 Únete a una partida
 
 Request Body:
 
-json
+```json
 {"deck_id": 1}
+```
 Respuestas:
 
 200 OK:
 
-json
+```json
 {"message": "Te has unido a la partida exitosamente"}
+```
 400 Bad Request:
 
-json
+```json
 {"error": "ID de mazo requerido"}
-GET /matches/current 🔒
+```
+GET /matches/current
 Obtiene partida actual
 
 Respuestas:
 
 200 OK:
 
-json
+```json
 {"match_data": "..."}
+```
+
 404 Not Found:
 
-json
+```json
 {"message": "No estás en ninguna partida activa"}
-POST /matches/action 🔒
+```
+POST /matches/action
 Realiza acción en partida
 
 Request Body:
 
-json
+```json
 {"action": "end_turn"}
+```
 o
-
-json
+```json
 {"action": "play_card", "card_id": 1}
+```
 Respuestas:
 
 200 OK:
 
-json
+```json
 {"message": "Turno pasado exitosamente"}
+```
 400 Bad Request:
 
-json
+```json
 {"error": "Acción requerida"}
-POST /matches/<int:match_id>/surrender 🔒
+```
+
+POST /matches/<int:match_id>/surrender 
 Ríndete en una partida
 
 Respuestas:
 
 200 OK:
 
-json
+```json
 {"message": "Te has rendido correctamente", "match_id": 1, "status": "finished"}
+```
 403 Forbidden:
 
-json
+```json
 {"error": "No estás en esta partida o no está activa"}
+```
