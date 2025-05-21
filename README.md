@@ -200,9 +200,9 @@ Cuando los jugadores esten dentro de la partida, se recorren las distintas fases
 
 ### Ejemplo del Login o Crear un nuevo usuario
 
-<img src="imagenes/Login.png" alt="Ejemplo de Login y Crear usuario" width="350" height="430"/>
-<img src="imagenes/Mazos.png" alt="Ejemplo de Login y Crear usuario" width="350" height="430"/>
-<img src="imagenes/Jugar.png" alt="Ejemplo de Login y Crear usuario" width="350" height="430"/>
+<img src="imagenes/Login.png" alt="Ejemplo de Login y Crear usuario" width="550" height="430"/>
+<img src="imagenes/Mazos.png" alt="Ejemplo de Login y Crear usuario" width="550" height="430"/>
+<img src="imagenes/Jugar.png" alt="Ejemplo de Login y Crear usuario" width="550" height="430"/>
 
 ### Test Unitarios para comprobar nuestro videojuego de cartas
 [Ver archivo de Wireframes de Login](test_unitarios/Test_Unitarios.py)
