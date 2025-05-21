@@ -196,7 +196,6 @@ En la sección de **Gestión de mazos**, el usuario puede crear nuevos mazos, ed
 
 Cuando los jugadores esten dentro de la partida, se recorren las distintas fases del juego: **Ver estado de la partida**, **Realizar acción (si es tu turno)** y **Rendirse/Abandonar partida**. 
 
-[Ver archivo de Wireframes de Login](Diagramas/Wireframes_Login.mermaid)
 
 ### Ejemplo del Login o Crear un nuevo usuario
 
