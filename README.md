@@ -52,6 +52,8 @@ El siguiente diagrama muestra la estructura interna del servidor, incluida la AP
 
 <img src="imagenes/server_diagrama.png" alt="Diagrama del servidor" width="850" height="370"/>
 
+[Ver Archivo de los dos en GENERAL](Diagramas/GENERAL.mermaid)
+
 ## Descripción de los Endpoints del WebService
 
 En nuestro proyecto, los endpoints nos permiten registrarnos y acceder al juego mediante `/register` y `/login`, obteniendo un token para utilizar el resto de funcionalidades. Consultamos las cartas disponibles con `/cards` y gestionamos nuestros mazos con `/decks`: podemos verlos, crearlos, editar su contenido o eliminarlos. Para jugar, usamos `/matches` para ver, crear o unirnos a partidas. Durante una partida, utilizamos `/matches/current` para ver el estado, `/matches/action` para jugar cartas o pasar turno, y `/matches/<id>/surrender` si decidimos rendirnos.
