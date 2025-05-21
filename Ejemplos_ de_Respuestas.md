@@ -84,7 +84,7 @@ Respuestas:
 200 OK:
 
 ```json
-[{"id": 1, "name": "Mazo 1", "cards": []}, ...]
+[{"id": 1, "name": "Mazo 1", "cards": []},]
 ```
 
 404 Not Found:
@@ -129,7 +129,7 @@ Respuestas:
 
 ```json
 {"error": "Error al eliminar mazo"}
-
+```
 POST /decks/<int:deck_id>/cards 
 Añade carta a un mazo
 
