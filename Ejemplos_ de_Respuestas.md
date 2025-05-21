@@ -16,17 +16,20 @@ Respuestas:
 
 ```json
 {"message": "Usuario registrado exitosamente", "user_id": 1}
-400 Bad Request:
 ```
+400 Bad Request:
+
 ```json
 {"error": "Todos los campos son requeridos"}
-500 Internal Server Error:
 ```
+500 Internal Server Error:
+
 ```json
 {"error": "Error en el registro: [detalle]"}
+```
 POST /login
 Inicia sesión y obtén token JWT
-```
+
 Request Body:
 
 ```json
