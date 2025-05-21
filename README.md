@@ -117,7 +117,7 @@ En nuestro proyecto, los endpoints nos permiten registrarnos y acceder al juego 
   "error": "Credenciales incorrectas"
 }
 ```
-[Ver los archivos de las respuestas completas](Ejemplos_ de_Respuestas.md)
+
 ## Diagrama de Clases del Backend
 
 La siguiente imagen muestra cómo está configurado el servidor del juego de cartas. Se utiliza un servidor web encargado de gestionar múltiples funciones, como el registro de usuarios, la administración de cartas y mazos, y la coordinación de las partidas.
