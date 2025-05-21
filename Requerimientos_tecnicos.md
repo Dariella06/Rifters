@@ -11,7 +11,7 @@
 - Utilizaremos **Python** con el framework **Flask**.
 
 ### c. Seguridad
-- **Autenticación del Token**: Utilizamos JWT (JSON Web Token) para gestionar la autenticación de los usuarios en la aplicación.
+- **Autenticación del Token**: Utilizamos para gestionar la autenticación de los usuarios en la aplicación.
 
 ### Frontend
 
